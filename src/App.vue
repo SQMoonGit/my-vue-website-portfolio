@@ -31,7 +31,7 @@
         </v-autocomplete>
       </v-app-bar>
 
-      <v-content>
+      <v-content class="pt-3">
         <v-container fluid class="pa-0">
           <router-view/>
         </v-container>

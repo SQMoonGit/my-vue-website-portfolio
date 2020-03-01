@@ -2,33 +2,33 @@
   <div class="weather">
     <v-row justify="center" no-gutters>
       <v-col lg="2" dense>
-        <v-card height="450">
+        <v-card height="250">
           <v-card-text>{{forecast["name"]}}, {{state}}</v-card-text>
           <v-card-text>{{forecast["sys"].country}}</v-card-text>
 
           <v-icon>{{weatherIcon(forecast["weather"][0].main)}}</v-icon>
           <v-card-text>{{forecast["weather"][0].main}}</v-card-text>
-          <v-card-text>Current Temp: {{forecast["main"].temp}}F</v-card-text>
-          <v-card-text>High: {{forecast["main"].temp_max}}F / Low: {{forecast["main"].temp_min}}F</v-card-text>
+          <v-card-text>Current Temp: {{forecast["main"].temp}}°F</v-card-text>
+          <v-card-text>High: {{forecast["main"].temp_max}}°F / Low: {{forecast["main"].temp_min}}°F</v-card-text>
           <v-card-text>Humidity: {{forecast["main"].humidity}}</v-card-text>
           <v-card-text>Wind Speeds: {{forecast["wind"].speed}}</v-card-text>
 
-          <v-btn absoluate bottom right icon @click="getCurrentWeather">
+          <v-btn absolute bottom right icon @click="getCurrentWeather">
             <v-icon small>fa-sync</v-icon>
           </v-btn>
         </v-card>
       </v-col>
 
       <v-col lg="2" dense>
-        <v-card height="450">
-          <v-card-title>5 Day Forecast</v-card-title>
+        <v-card height="250">
+          <v-card-text class="title">5 Day Forecast</v-card-text>
           <v-card-text v-for="(day, index) in fiveDayForecast" :key="index">
             {{weekDays[(index + 1 + dayIndex) % 7]}}:
             <v-icon>{{weatherIcon(day["weather"][0].main)}}</v-icon>
-            {{day["main"].temp_max}}F / {{day["main"].temp_min}}F
+            {{day["main"].temp_max}}°F / {{day["main"].temp_min}}°F
           </v-card-text>
 
-          <v-btn absoluate bottom right icon @click="getFutureForecast">
+          <v-btn absolute bottom right icon @click="getFutureForecast">
             <v-icon small>fa-sync</v-icon>
           </v-btn>
         </v-card>
@@ -107,4 +107,9 @@ export default class WeatherComponent extends Vue{
 </script>
 
 <style lang="scss">
+div{
+  .v-card__text{
+    padding: 5px 0 0 0;
+  }
+}
 </style>
