@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <v-navigation-drawer :clipped="clipped" v-model="sideMenuExpansion" app disable-resize-watcher class="yellow accent-1">
+      <!-- <v-navigation-drawer :clipped="clipped" v-model="sideMenuExpansion" app disable-resize-watcher class="deep-purple darken-4">
         <v-list>
           <v-list-item link v-for="links in changeList" :keys="link">
             {{links}}
           </v-list-item>
         </v-list>
-      </v-navigation-drawer>
+      </v-navigation-drawer> -->
 
-      <v-app-bar fixed app :clipped-left="clipped" color="blue darken-3">
+      <v-app-bar fixed app :clipped-left="clipped" color="blue darken-4">
         <v-app-bar-nav-icon @click.stop="sideMenuExpansion =!sideMenuExpansion"></v-app-bar-nav-icon>
         <v-btn rounded text>
           <router-link class="title white--text" :to="{name: 'home'}">Home</router-link>
@@ -25,11 +25,10 @@
 
         <v-autocomplete
             hide-no-data hide-selected hide-details
-            v-model="model" :loading="isLoading" :items="items"
+            :loading="isLoading"
             clearable class="white--text col-2" color="white"
             placeholder="Type to Search" append-icon="fa-search">
         </v-autocomplete>
-
       </v-app-bar>
 
       <v-content>
@@ -53,8 +52,8 @@ import { Component, Vue, Watch } from 'vue-property-decorator'
 export default class App extends Vue {
 
   private isLoading?: boolean = false;
-  private model!: any;
-  private items!: any;
+  // private model!: any;
+  // private items!: any;
 
   private currentPage?: string = 'home';
   private sideMenuExpansion: boolean = true;
