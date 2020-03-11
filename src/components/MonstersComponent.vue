@@ -1,16 +1,19 @@
 <template>
     <div>
         <v-card>
-            <v-autocomplete 
-                hide-details hide-selected hide-no-data 
-                :items="monsterNames" 
+            <v-autocomplete
+                hide-details hide-selected hide-no-data
+                :items="monsterNames"
                 :prepend-inner-icon="'mhw-'+ model.toLowerCase()"
-                v-model="model" :loading="isLoading" 
+                v-model="model" :loading="isLoading"
                 class="monsters white--text col-auto">
             </v-autocomplete>
+
+            Insert Monster picture here
+
         </v-card>
     </div>
-    
+
 </template>
 
 <script lang="ts">

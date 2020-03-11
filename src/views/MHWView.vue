@@ -1,28 +1,35 @@
 <template>
   <div>
-    <v-row>
+    <v-row no-gutters>
       <v-col>
-        <v-card>
-          Armor and Weapon card selection here
-        </v-card>
+        <equip-component :mhwLink="mhwURL"></equip-component>
       </v-col>
 
       <v-col>
-        <v-card>
-          Monster Selection here
-        </v-card>
+        <monsters-component :mhwLink="mhwURL"></monsters-component>
       </v-col>
-
     </v-row>
+
+    <v-card>
+      Some information and description and stats and stuff here
+    </v-card>
 
   </div>
 </template>
 
 <script lang="ts">
 import {Component, Vue, Watch} from 'vue-property-decorator';
+import EquipComponent from '@/components/EquipComponent.vue';
+import MonsterComponent from '@/components/MonstersComponent.vue';
 
-@Component({})
+@Component({
+  components: {
+    EquipComponent, MonstersComponent
+  }
+})
 export default class MHWView extends Vue{
+  private mhwURL: string = "https://mhw-db.com";
+
 }
 </script>
 

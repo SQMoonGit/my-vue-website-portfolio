@@ -1,15 +1,15 @@
 <template>
     <div>
         <v-card>
-            <v-row>
+            <v-row no-gutters>
                 <v-col>
-                    <!-- <v-autocomplete 
-                        hide-details hide-selected hide-no-data 
-                        v-model="" :loading="isLoading">
-                    </v-autocomplete> -->
+                    <v-autocomplete
+                        hide-details hide-selected hide-no-data
+                        :items="weaponsList"
+                        v-model="weaponChosen"
+                        :loading="isLoading">
+                    </v-autocomplete>
 
-                    <!-- <v-autocomplete >
-                    </v-autocomplete> -->
 
                 </v-col>
 
@@ -20,7 +20,7 @@
             </v-row>
         </v-card>
     </div>
-    
+
 </template>
 
 <script lang="ts">
@@ -33,9 +33,11 @@ export default class EquipComponent extends Vue{
     @Prop() mhwLink!: string;
 
     private isLoading: boolean = false;
-    private model: string = "";
+
     private armorList: Armor[] = [];
+
     private weaponsList: Weapons[] = [];
+    private weaponChosen: Weapons = new Weapons();
 
     created(){
         this.$http.get(`${this.mhwLink}/armor`).then((result) =>{
