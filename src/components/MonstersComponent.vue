@@ -1,8 +1,14 @@
 <template>
     <div>
+<<<<<<< HEAD
         <v-card>
             <v-autocomplete
                 hide-details hide-selected hide-no-data
+=======
+        <v-card min-height="260">
+            <v-autocomplete
+                hide-details hide-selected hide-no-data return-object
+>>>>>>> 00108ac9768f3b5eaf87b539182132a35d1f5720
                 :items="monsterNames"
                 :prepend-inner-icon="'mhw-'+ model.toLowerCase()"
                 v-model="model" :loading="isLoading"
@@ -22,30 +28,20 @@ import {Monster} from "@/model/monsters";
 
 @Component
 export default class MonsterComponent extends Vue{
-    @Prop() mhwLink!: string;
+  @Prop() private monsterList!: Monster[];
 
-    private isLoading: boolean = false;
-    private model: string = "";
-    private monsterList: Monster[] = [];
-    private monsterNames: string[] = [];
+  private isLoading: boolean = false;
+  private model: string = "";
+  private monsterList: Monster[] = [];
+  private monsterNames: string[] = [];
 
-    created(){
-        this.$http.get(`${this.mhwLink}/monsters`).then((result) =>{
-            if(result.ok && result.data){
-                this.monsterList = result.data;
-                this.monsterList.forEach((value: Monster, index: number)=>{
-                    if(value){
-                        this.monsterNames.push(value.name);
-                    }
-                })
-            } else{
-                throw new Error(result.statusText);
-            }
-        }, (error) =>{
-            alert(error.body.error);
-            console.log("[ERROR] - GET/monsters");
-        })
-    }
+  created(){
+      this.monsterList.forEach((value: Monster, index: number)=>{
+          if(value){
+              this.monsterNames.push(value.name);
+          }
+      })
+  }
 }
 </script>
 
