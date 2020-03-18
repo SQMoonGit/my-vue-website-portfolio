@@ -67,8 +67,6 @@ export default class EquipComponent extends Vue{
       this.armorPieces.forEach((value: string) =>{
           this.$set(this.armorSelected, value, '');
       })
-
-
   }
 
   @Watch('armorSetSelected', {immediate: true, deep: true})

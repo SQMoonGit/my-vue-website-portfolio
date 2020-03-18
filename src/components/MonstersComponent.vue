@@ -8,6 +8,9 @@
                 v-model="model" :loading="isLoading"
                 class="monsters white--text col-auto">
             </v-autocomplete>
+
+            Insert Monster picture here
+
         </v-card>
     </div>
 
@@ -23,7 +26,6 @@ export default class MonsterComponent extends Vue{
 
   private isLoading: boolean = false;
   private model: string = "";
-  private monsterList: Monster[] = [];
   private monsterNames: string[] = [];
 
   created(){
