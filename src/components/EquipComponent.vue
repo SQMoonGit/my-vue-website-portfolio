@@ -1,17 +1,5 @@
 <template>
     <div>
-<<<<<<< HEAD
-        <v-card>
-            <v-row no-gutters>
-                <v-col>
-                    <v-autocomplete
-                        hide-details hide-selected hide-no-data
-                        :items="weaponsList"
-                        v-model="weaponChosen"
-                        :loading="isLoading">
-                    </v-autocomplete>
-
-=======
         <v-card min-height="260">
             <v-row no-gutters>
                 <v-col>
@@ -40,7 +28,6 @@
                     </v-autocomplete>
 
                     <v-btn dense @click="isArmorSet = !isArmorSet">Armorset</v-btn>
->>>>>>> 00108ac9768f3b5eaf87b539182132a35d1f5720
 
                 </v-col>
 
@@ -62,39 +49,6 @@ import {Armorsets} from "@/model/armorsets";
 
 @Component
 export default class EquipComponent extends Vue{
-<<<<<<< HEAD
-    @Prop() mhwLink!: string;
-
-    private isLoading: boolean = false;
-
-    private armorList: Armor[] = [];
-
-    private weaponsList: Weapons[] = [];
-    private weaponChosen: Weapons = new Weapons();
-
-    created(){
-        this.$http.get(`${this.mhwLink}/armor`).then((result) =>{
-            if(result.ok && result.data){
-                this.armorList = result.data;
-            } else{
-                throw new Error(result.statusText);
-            }
-        }, (error) =>{
-            alert(error.body.error);
-            console.log("[ERROR] - GET/armor");
-        })
-
-        this.$http.get(`${this.mhwLink}/weapons`).then((result) =>{
-            if(result.ok && result.data){
-                this.weaponsList = result.data;
-            } else{
-                throw new Error(result.statusText);
-            }
-        }, (error) =>{
-            alert(error.body.error);
-            console.log("[ERROR] - GET/weapons");
-        })
-=======
 
   @Prop() private armorSets!: Armorsets[];
   @Prop() private weaponsList!: Weapons[];
@@ -125,7 +79,6 @@ export default class EquipComponent extends Vue{
           this.$set(this.armorSelected, type, armor);
         });
       });
->>>>>>> 00108ac9768f3b5eaf87b539182132a35d1f5720
     }
   }
 

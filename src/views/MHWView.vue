@@ -2,19 +2,11 @@
   <div>
     <v-row no-gutters>
       <v-col>
-<<<<<<< HEAD
-        <equip-component :mhwLink="mhwURL"></equip-component>
-      </v-col>
-
-      <v-col>
-        <monsters-component :mhwLink="mhwURL"></monsters-component>
-=======
         <equip-component :armor-list="armorList" :weapons-list="weaponsList" :armor-sets="armorSets"></equip-component>
       </v-col>
 
       <v-col>
         <monsters-component :monster-lists="monsterList"></monsters-component>
->>>>>>> 00108ac9768f3b5eaf87b539182132a35d1f5720
       </v-col>
     </v-row>
 
@@ -27,19 +19,6 @@
 
 <script lang="ts">
 import {Component, Vue, Watch} from 'vue-property-decorator';
-<<<<<<< HEAD
-import EquipComponent from '@/components/EquipComponent.vue';
-import MonsterComponent from '@/components/MonstersComponent.vue';
-
-@Component({
-  components: {
-    EquipComponent, MonstersComponent
-  }
-})
-export default class MHWView extends Vue{
-  private mhwURL: string = "https://mhw-db.com";
-
-=======
 import EquipComponent from '../components/EquipComponent.vue';
 import MonstersComponent from '../components/MonstersComponent.vue';
 import {Monster} from "@/models/monsters";
@@ -114,7 +93,6 @@ export default class MHWView extends Vue{
   }
 
 
->>>>>>> 00108ac9768f3b5eaf87b539182132a35d1f5720
 }
 </script>
 

@@ -1,14 +1,8 @@
 <template>
     <div>
-<<<<<<< HEAD
-        <v-card>
-            <v-autocomplete
-                hide-details hide-selected hide-no-data
-=======
         <v-card min-height="260">
             <v-autocomplete
                 hide-details hide-selected hide-no-data return-object
->>>>>>> 00108ac9768f3b5eaf87b539182132a35d1f5720
                 :items="monsterNames"
                 :prepend-inner-icon="'mhw-'+ model.toLowerCase()"
                 v-model="model" :loading="isLoading"
