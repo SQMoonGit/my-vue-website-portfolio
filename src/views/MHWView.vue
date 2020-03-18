@@ -2,11 +2,11 @@
   <div>
     <v-row no-gutters>
       <v-col>
-        <equip-component ></equip-component>
+        <equip-component :armor-list="armorList" :weapons-list="weaponsList" :armor-sets="armorSets"></equip-component>
       </v-col>
 
       <v-col>
-        <monsters-component ></monsters-component>
+        <monsters-component :monster-lists="monsterList"></monsters-component>
       </v-col>
     </v-row>
 
@@ -21,6 +21,10 @@
 import {Component, Vue, Watch} from 'vue-property-decorator';
 import EquipComponent from '../components/EquipComponent.vue';
 import MonstersComponent from '../components/MonstersComponent.vue';
+import {Monster} from "@/models/monsters";
+import {Armor} from "@/models/armor";
+import {Weapons} from "@/models/weapons";
+import {Armorsets} from "@/models/armorsets";
 
 @Component({
   components: {
@@ -31,6 +35,11 @@ export default class MHWView extends Vue{
   private isLoading?: boolean = false;
   private model: string = "";
   private mhwURL: string = "https://mhw-db.com";
+
+  private monsterList: Monster[] = [];
+  private armorList: Armor[] = [];
+  private weaponsList: Weapons[] = [];
+  private armorSets: Armorsets[] = [];
 
   created(){
     //API call for armor
@@ -73,7 +82,7 @@ export default class MHWView extends Vue{
     this.$http.get(`${this.mhwURL}/monsters`).then((result) =>{
         if(result.ok && result.data){
             this.monsterList = result.data;
-            
+
         } else{
             throw new Error(result.statusText);
         }

@@ -1,13 +1,13 @@
 <template>
     <div>
-        <v-card>
+        <v-card min-height="260">
             <v-row no-gutters>
                 <v-col>
-                    <v-autocomplete 
+                    <v-autocomplete
                         hide-details hide-selected hide-no-data return-object
                         :items="weaponsList" item-text="name"
-                        :prepend-inner-icon="'mhw-' + weaponChosen.type"
-                        v-model="weaponChosen" :loading="isLoading">
+                        :prepend-inner-icon="'mhw-' + weaponSelected.type"
+                        v-model="weaponSelected" :loading="isLoading">
                     </v-autocomplete>
 
                     <v-autocomplete
@@ -27,7 +27,7 @@
                         v-model="armorSetSelected" :loading="isLoading" >
                     </v-autocomplete>
 
-                    <v-btn dense @click="updateArmorSelected">Armorset</v-btn>
+                    <v-btn dense @click="isArmorSet = !isArmorSet">Armorset</v-btn>
 
                 </v-col>
 
@@ -38,11 +38,11 @@
             </v-row>
         </v-card>
     </div>
-    
+
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator';
+import {Vue, Component, Prop, Watch} from 'vue-property-decorator';
 import {Weapons} from "@/model/weapons";
 import {Armor} from "@/model/armor";
 import {Armorsets} from "@/model/armorsets";
@@ -50,32 +50,38 @@ import {Armorsets} from "@/model/armorsets";
 @Component
 export default class EquipComponent extends Vue{
 
+  @Prop() private armorSets!: Armorsets[];
+  @Prop() private weaponsList!: Weapons[];
+  @Prop() private armorList!: Armor[];
 
-    private isLoading: boolean = false;
-    private isArmorSet: boolean = false;
+  private isLoading: boolean = false;
+  private isArmorSet: boolean = false;
+  private armorPieces: string[] = [];
 
-    private armorList: Armor[] = [];
-    private armorSelected: object = {};
-    private armorPieces: string[] = [];
+  private armorSelected: object = {};
+  private armorSetSelected: Armorsets = new Armorsets();
+  private weaponSelected: Weapons = new Weapons();
 
-    private armorSets: Armorsets[] = [];
-    private armorSetSelected: Armorsets = new Armorsets();
+  created(){
+      this.armorPieces = ['head', 'chest', 'gloves', 'waist', 'legs'];
+      this.armorPieces.forEach((value: string) =>{
+          this.$set(this.armorSelected, value, '');
+      })
 
-    private weaponsList: Weapons[] = [];
-    private weaponChosen: Weapons = new Weapons();
 
-    created(){
-        this.armorPieces = ['head', 'chest', 'gloves', 'waist', 'legs'];
-        this.armorPieces.forEach((value: string) =>{
-            this.$set(this.armorSelected, value, '');
-        })
+  }
 
-        
+  @Watch('armorSetSelected', {immediate: true, deep: true})
+  public updateArmor(){
+    if(this.isArmorSet){
+      this.armorPieces.forEach((type:string)=>{
+        this.armorSetSelected.pieces.forEach((armor:Armor) =>{
+          this.$set(this.armorSelected, type, armor);
+        });
+      });
     }
+  }
 
-    public updateArmorSelected(){
-        this.isArmorSet = !this.isArmorSet;
-    }
 }
 </script>
 

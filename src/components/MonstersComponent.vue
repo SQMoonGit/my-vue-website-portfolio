@@ -1,16 +1,16 @@
 <template>
     <div>
-        <v-card>
-            <v-autocomplete 
-                hide-details hide-selected hide-no-data 
-                :items="monsterNames" 
+        <v-card min-height="260">
+            <v-autocomplete
+                hide-details hide-selected hide-no-data return-object
+                :items="monsterNames"
                 :prepend-inner-icon="'mhw-'+ model.toLowerCase()"
-                v-model="model" :loading="isLoading" 
+                v-model="model" :loading="isLoading"
                 class="monsters white--text col-auto">
             </v-autocomplete>
         </v-card>
     </div>
-    
+
 </template>
 
 <script lang="ts">
@@ -19,19 +19,20 @@ import {Monster} from "@/model/monsters";
 
 @Component
 export default class MonsterComponent extends Vue{
+  @Prop() private monsterList!: Monster[];
 
-    private isLoading: boolean = false;
-    private model: string = "";
-    private monsterList: Monster[] = [];
-    private monsterNames: string[] = [];
+  private isLoading: boolean = false;
+  private model: string = "";
+  private monsterList: Monster[] = [];
+  private monsterNames: string[] = [];
 
-    created(){
-        this.monsterList.forEach((value: Monster, index: number)=>{
-            if(value){
-                this.monsterNames.push(value.name);
-            }
-        })
-    }
+  created(){
+      this.monsterList.forEach((value: Monster, index: number)=>{
+          if(value){
+              this.monsterNames.push(value.name);
+          }
+      })
+  }
 }
 </script>
 
