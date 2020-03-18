@@ -21,10 +21,10 @@
 import {Component, Vue, Watch} from 'vue-property-decorator';
 import EquipComponent from '../components/EquipComponent.vue';
 import MonstersComponent from '../components/MonstersComponent.vue';
-import {Monster} from "@/models/monsters";
-import {Armor} from "@/models/armor";
-import {Weapons} from "@/models/weapons";
-import {Armorsets} from "@/models/armorsets";
+import {Monster} from "../model/monsters";
+import {Armor} from "../model/armor";
+import {Weapons} from "../model/weapons";
+import {Armorsets} from "../model/armorsets";
 
 @Component({
   components: {
