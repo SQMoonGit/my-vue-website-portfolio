@@ -49,7 +49,7 @@ import {Armorsets} from "@/model/armorsets";
 
 @Component
 export default class EquipComponent extends Vue{
-    @Prop() mhwLink!: string;
+
 
     private isLoading: boolean = false;
     private isArmorSet: boolean = false;
@@ -70,41 +70,7 @@ export default class EquipComponent extends Vue{
             this.$set(this.armorSelected, value, '');
         })
 
-        //API call for armor
-        this.$http.get(`${this.mhwLink}/armor`).then((result) =>{
-            if(result.ok && result.data){
-                this.armorList = result.data;
-            } else{
-                throw new Error(result.statusText);
-            }
-        }, (error) =>{
-            alert(error.body.error);
-            console.log("[ERROR] - GET/armor");
-        })
-
-        //API call for weapons
-        this.$http.get(`${this.mhwLink}/weapons`).then((result) =>{
-            if(result.ok && result.data){
-                this.weaponsList = result.data;
-            } else{
-                throw new Error(result.statusText);
-            }
-        }, (error) =>{
-            alert(error.body.error);
-            console.log("[ERROR] - GET/weapons");
-        })
-
-        //API call for armorsets
-        this.$http.get(`${this.mhwLink}/armor/sets`).then((result) =>{
-            if(result.ok && result.data){
-                this.armorSets = result.data;
-            } else{
-                throw new Error(result.statusText);
-            }
-        }, (error) =>{
-            alert(error.body.error);
-            console.log("[ERROR] - GET/armor/sets");
-        })
+        
     }
 
     public updateArmorSelected(){

@@ -19,7 +19,6 @@ import {Monster} from "@/model/monsters";
 
 @Component
 export default class MonsterComponent extends Vue{
-    @Prop() mhwLink!: string;
 
     private isLoading: boolean = false;
     private model: string = "";
@@ -27,20 +26,10 @@ export default class MonsterComponent extends Vue{
     private monsterNames: string[] = [];
 
     created(){
-        this.$http.get(`${this.mhwLink}/monsters`).then((result) =>{
-            if(result.ok && result.data){
-                this.monsterList = result.data;
-                this.monsterList.forEach((value: Monster, index: number)=>{
-                    if(value){
-                        this.monsterNames.push(value.name);
-                    }
-                })
-            } else{
-                throw new Error(result.statusText);
+        this.monsterList.forEach((value: Monster, index: number)=>{
+            if(value){
+                this.monsterNames.push(value.name);
             }
-        }, (error) =>{
-            alert(error.body.error);
-            console.log("[ERROR] - GET/monsters");
         })
     }
 }
