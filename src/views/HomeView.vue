@@ -1,7 +1,5 @@
 <template>
   <div>
-    <weather-component></weather-component>
-
     <v-card>
 
       <v-card-title>Summary</v-card-title>
@@ -15,21 +13,19 @@
     <v-card>
       <v-card-title>Skills</v-card-title>
       <v-row class="ma-auto">
-        <v-col>test</v-col>
-        <v-col>tes</v-col>
-        <v-col>te</v-col>
-        <v-col>t</v-col>
-
+        <v-col>Programming Languages</v-col>
+        <v-col>Software</v-col>
+        <v-col>Operating Systems</v-col>
+        <v-col>Other</v-col>
       </v-row>
     </v-card>
 
     <v-card>
       <v-card-title>Projects</v-card-title>
-      <v-row class="ma-auto">something</v-row>
-      <v-row class="ma-auto">anything</v-row>
-      <v-row class="ma-auto">nothing</v-row>
-      <v-row class="ma-auto">everything</v-row>
-
+      <v-row class="ma-auto project">something</v-row>
+      <v-row class="ma-auto project">anything</v-row>
+      <v-row class="ma-auto project">nothing</v-row>
+      <v-row class="ma-auto project">everything</v-row>
     </v-card>
 
   </div>
@@ -37,14 +33,17 @@
 
 <script lang="ts">
 import {Component, Vue, Watch} from 'vue-property-decorator';
-import WeatherComponent from '@/components/WeatherComponent.vue'
 
 @Component({
-  components: {WeatherComponent}
 })
 export default class HomeView extends Vue{
 }
 </script>
 
 <style lang="scss">
+  .project {
+    display: flex;
+    align-items: baseline;
+    padding-left: 1rem;
+  }
 </style>

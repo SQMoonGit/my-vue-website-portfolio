@@ -21,6 +21,10 @@
 import {Component, Vue, Watch} from 'vue-property-decorator';
 import EquipComponent from '../components/EquipComponent.vue';
 import MonstersComponent from '../components/MonstersComponent.vue';
+import {Armor} from '../model/armor';
+import {Monster} from '../model/monsters';
+import {Weapons} from '../model/weapons';
+import {Armorsets} from '../model/armorsets';
 
 @Component({
   components: {
@@ -31,6 +35,12 @@ export default class MHWView extends Vue{
   private isLoading?: boolean = false;
   private model: string = "";
   private mhwURL: string = "https://mhw-db.com";
+
+  private armorList: Armor[] = [];
+  private monsterList: Monster[] = [];
+  private weaponsList: Weapons[] = [];
+  private armorSets: Armorsets[] = [];
+
 
   created(){
     //API call for armor

@@ -4,7 +4,7 @@
       <v-col lg="2" dense>
         <v-card height="250">
           <v-card-text class="pt-3">{{forecast["name"]}}, {{state}}</v-card-text>
-          <v-card-text>{{forecast["sys"].country}}</v-card-text>
+          <v-card-text v-if="forecast.sys.country">{{forecast.sys.country}}</v-card-text>
 
           <v-icon>{{weatherIcon(forecast["weather"][0].main)}}</v-icon>
           <v-card-text>{{forecast["weather"][0].main}}</v-card-text>
@@ -34,9 +34,7 @@
         </v-card>
       </v-col>
     </v-row>
-
   </div>
-
 </template>
 
 <script lang="ts">
