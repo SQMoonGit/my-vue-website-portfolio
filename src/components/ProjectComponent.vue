@@ -1,0 +1,97 @@
+<template>
+  <v-card class="ma-4">
+    <v-card-title class="d-block pt-2 pb-0">Projects</v-card-title>
+    <v-expansion-panels>
+      <v-expansion-panel>
+        <v-expansion-panel-header
+          >Automated Slab-Lifting Control System</v-expansion-panel-header
+        >
+        <v-expansion-panel-content>
+          Senior Design Project sponsored by a construction firm called Tella
+          Firma to create a control system for them to automate their
+          slab-lifting process. Worked with a separate mechanical engineering
+          team to produce a demo of the system. Utilized Arduino Megas, a
+          Raspberry Pi, and ultrasonic sensors for the control system. Data
+          management was coded in C, data upload and download in Python, amd GCP
+          utilized for data storage and host maintenance. Awarded 1st place in
+          both Fall and Spring UTDesign Expos.
+          <v-img></v-img>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+
+      <v-expansion-panel>
+        <v-expansion-panel-header>
+          Twitch Data Analysis
+        </v-expansion-panel-header>
+        <v-expansion-panel-content>
+          Data visualization of Twitch's metrics
+          <v-card class="my-2" :elevation="0">
+            <v-row class="mx-2">
+              • Python script to retrieve data from Twitch's API to analyze data
+              from its streaming platform
+            </v-row>
+            <v-row class="mx-2">
+              • Hosted in Amazon Lambda to run on an hourly basis, storing the
+              data in an S3 bucket for API calls
+            </v-row>
+            <v-row class="mx-2">
+              • Separate script calls API and analyzes data to desired metrics
+            </v-row>
+            <v-row class="mx-2 justify-end">
+              <router-link class="link" :to="{ name: 'Twitch Stats' }">
+                See charts
+              </router-link>
+            </v-row>
+          </v-card>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+
+      <v-expansion-panel>
+        <v-expansion-panel-header>AR Mobile App</v-expansion-panel-header>
+        <v-expansion-panel-content>
+          Augmented Reality Globe Mobile App
+          <v-card class="my-2" :elevation="0">
+            <v-row class="mx-2">
+              • A mobile app that tests plane surface validation
+            </v-row>
+            <v-row class="mx-2">
+              • Scans and display valid plane surfaces as camera is moved
+            </v-row>
+            <v-row class="mx-2">
+              • Touching valid surface displays rotatable globe based on anchor
+              point
+            </v-row>
+            <v-row class="mx-2">
+              • Coded in C# with Google ARCore assets in Unity Editor
+            </v-row>
+            <v-row class="mx-2 justify-end">
+              <a
+                class="link"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/SQMoonGit/EarthAR"
+              >
+                Github Repo
+              </a>
+            </v-row>
+          </v-card>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
+  </v-card>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+export default class ProjectComponent extends Vue {}
+</script>
+
+<style lang="scss">
+.link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+</style>
