@@ -4,8 +4,8 @@
     <v-expansion-panels>
       <v-expansion-panel>
         <v-expansion-panel-header
-          >Automated Slab-Lifting Control System</v-expansion-panel-header
-        >
+          >Automated Slab-Lifting Control System
+        </v-expansion-panel-header>
         <v-expansion-panel-content>
           Senior Design Project sponsored by a construction firm called Tella
           Firma to create a control system for them to automate their

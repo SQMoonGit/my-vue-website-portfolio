@@ -8,11 +8,11 @@
           </router-link>
         </v-btn>
 
-        <v-btn rounded text>
+        <!-- <v-btn rounded text>
           <router-link class="white--text" :to="{ name: 'MHW Builder' }">
             MHW Builder
           </router-link>
-        </v-btn>
+        </v-btn> -->
 
         <v-btn rounded text>
           <router-link class="white--text" :to="{ name: 'Twitch Stats' }">
@@ -35,13 +35,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class App extends Vue {
   private isLoading?: boolean = false;
-  // private model!: any;
-  // private items!: any;
 
   private currentPage?: string = "home";
   private sideMenuExpansion: boolean = true;
@@ -54,11 +52,6 @@ export default class App extends Vue {
       behavior: "smooth"
     });
   }
-  //
-  // @Watch('$route.path', {deep:true, immediate: true})
-  // public changeCurrentPage(){
-  //   if(this.$route.path.includes())
-  // }
 }
 </script>
 
@@ -73,7 +66,9 @@ export default class App extends Vue {
 }
 
 #scroll-button {
-  background-color: #f9a825;
-  color: #dce775;
+  height: 3rem;
+  width: 3rem;
+  background-color: #0d47a1;
+  color: #42a5f5;
 }
 </style>

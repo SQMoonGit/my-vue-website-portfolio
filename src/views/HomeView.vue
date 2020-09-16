@@ -16,9 +16,15 @@
     <v-card class="pb-1 ma-4">
       <v-card-title class="d-block pt-2">Skills</v-card-title>
       <v-row class="ma-auto">
-        <v-col class="pa-0 pb-2 skill-cards" v-for="(value, index) in skills">
+        <v-col
+          class="pa-0 pb-2 skill-cards"
+          v-for="(value, name, index) in skills"
+        >
           <v-card :elevation="0">
-            <v-card-title class="py-0">{{ index }}</v-card-title>
+            <v-card-title class="py-0">
+              <v-icon class="mr-2">{{ codeIcons[index] }}</v-icon>
+              {{ name }}
+            </v-card-title>
             <v-list-item-content
               v-for="skill in value"
               class="px-4 py-0 body-2"
@@ -69,6 +75,7 @@ export default class HomeView extends Vue {
     Software: this.applications,
     Frameworks: this.frameworks
   };
+  private codeIcons = ["fa-code", "fa-code-branch", "fa-desktop"];
 }
 </script>
 
@@ -81,6 +88,5 @@ export default class HomeView extends Vue {
 
 .skill-cards {
   box-shadow: 4px 12px 10px -16px rgb(105, 98, 98);
-  // border: 1px blue solid;
 }
 </style>
