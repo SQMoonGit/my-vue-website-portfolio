@@ -7,15 +7,40 @@
           >Automated Slab-Lifting Control System
         </v-expansion-panel-header>
         <v-expansion-panel-content>
-          Senior Design Project sponsored by a construction firm called Tella
-          Firma to create a control system for them to automate their
-          slab-lifting process. Worked with a separate mechanical engineering
-          team to produce a demo of the system. Utilized Arduino Megas, a
-          Raspberry Pi, and ultrasonic sensors for the control system. Data
-          management was coded in C, data upload and download in Python, amd GCP
-          utilized for data storage and host maintenance. Awarded 1st place in
-          both Fall and Spring UTDesign Expos.
-          <v-img></v-img>
+          Senior Design Project
+          <v-card class="my-2" :elevation="0">
+            <v-col>
+              <v-row class="mx-2">
+                • Project sponsored by a construction firm called Tella Firma to
+                create a control system for them to automate their slab-lifting
+                process
+              </v-row>
+              <v-row class="mx-2">
+                • Worked with a separate mechanical engineering team to produce
+                a demo of the system
+              </v-row>
+              <v-row class="mx-2">
+                • Utilized Arduino Megas, a Raspberry Pi, and ultrasonic sensors
+                for the control system
+              </v-row>
+              <v-row class="mx-2">
+                • Data management was coded in C, data upload and download in
+                Python, and GCP utilized for data storage and host maintenance
+              </v-row>
+              <v-row class="mx-2">
+                • Awarded 1st place in both Fall and Spring UTDesign Expos
+              </v-row>
+            </v-col>
+            <v-row>
+              <v-col>
+                <v-img aspect-ratio="1" src="../assets/slab_final_product.png">
+                </v-img>
+              </v-col>
+              <v-col>
+                <v-img src="../assets/slab_diagram.png"></v-img>
+              </v-col>
+            </v-row>
+          </v-card>
         </v-expansion-panel-content>
       </v-expansion-panel>
 
