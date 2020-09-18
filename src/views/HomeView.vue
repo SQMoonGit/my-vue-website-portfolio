@@ -3,6 +3,7 @@
     <v-card class="mx-4">
       <v-col>
         image here
+        <v-img></v-img>
       </v-col>
     </v-card>
 

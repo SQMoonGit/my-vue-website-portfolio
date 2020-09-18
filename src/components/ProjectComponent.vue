@@ -33,8 +33,7 @@
             </v-col>
             <v-row>
               <v-col>
-                <v-img aspect-ratio="1" src="../assets/slab_final_product.png">
-                </v-img>
+                <v-img aspect-ratio="1" src="../assets/slab-gif.gif"> </v-img>
               </v-col>
               <v-col>
                 <v-img src="../assets/slab_diagram.png"></v-img>
