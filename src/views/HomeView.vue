@@ -1,16 +1,20 @@
 <template>
   <div>
-    <v-card class="mx-4">
-      <v-col>
-        image here
-        <v-img></v-img>
-      </v-col>
-    </v-card>
+    <v-parallax style="height:100vh;" src="../assets/jellyfish.jpg">
+      <v-container class="mx-4 text-h1">
+        Steven Moon
+        <p class="text-h5">Website Resume</p>
+      </v-container>
+    </v-parallax>
 
     <v-card class="pb-1 mx-4 mb-4">
-      <v-card-title class="d-block">Summary</v-card-title>
-      <v-row>
-        <v-col class="ma-auto">Put information summary here</v-col>
+      <v-card-title class="d-block pt-2 pb-0">About Me</v-card-title>
+      <v-row class="ma-auto">
+        <v-col class="ma-auto"
+          >I'm a front-end developer currently employed at Capital One. Started
+          my journey in web development 2019 and have been down the rabbit hole
+          ever since. Enjoying every bit of it and learning more everyday.
+        </v-col>
       </v-row>
     </v-card>
 
