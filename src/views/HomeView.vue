@@ -63,7 +63,14 @@ export default class HomeView extends Vue {
     "SQL",
     "C++"
   ];
-  private frameworks = ["Vue", "Angular", "Vuetify", "Django", "React"];
+  private frameworks = [
+    "Vue",
+    "Angular",
+    "Vuetify",
+    "Django",
+    "React",
+    "Spring"
+  ];
   private applications = [
     "VSCode",
     "Webstorm",

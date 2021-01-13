@@ -3,13 +3,23 @@
     Twitch View text
 
     <p>Add some cards and fancy stuff here</p>
-    <v-card>
-      <!-- <GChart
+
+    <!-- <v-btn
+      id="github-button"
+      target="_blank"
+      rel="noopener noreferrer"
+      href="https://github.com"
+    >
+      Github Repo
+    </v-btn> -->
+
+    <!-- <v-card>
+      <GChart
         type="ColumnChart"
         :data="chartData"
         :options="chartOptions"
-      ></GChart> -->
-    </v-card>
+      ></GChart>
+    </v-card> -->
   </div>
 </template>
 
@@ -39,4 +49,10 @@ export default class TwitchView extends Vue {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+#github-button {
+  background-image: url(../assets/githubCat.jpg);
+  background-color: inherit;
+  box-shadow: none;
+}
+</style>
