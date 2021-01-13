@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-parallax style="height:100vh;" src="../assets/jellyfish.jpg">
-      <v-container class="mx-4 text-h1">
+      <v-container class="text-h1">
         Steven Moon
         <p class="text-h5">Website Resume</p>
       </v-container>
@@ -46,7 +46,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import ProjectComponent from "../components/ProjectComponent.vue";
 
 @Component({

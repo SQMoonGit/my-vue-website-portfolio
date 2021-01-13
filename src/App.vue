@@ -28,22 +28,35 @@
       </v-main>
     </v-app>
 
-    <v-btn fab bottom right fixed id="scroll-button" @click="scrollToTop">
+    <v-btn
+      fab
+      bottom
+      right
+      fixed
+      id="scroll-button"
+      v-if="scrolled"
+      @click="scrollToTop"
+    >
       <v-icon>fa-arrow-up</v-icon>
     </v-btn>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 
 @Component({})
 export default class App extends Vue {
   private isLoading?: boolean = false;
+  private scrolled: boolean = false;
 
   private currentPage?: string = "home";
   private sideMenuExpansion: boolean = true;
   private clipped: boolean = false;
+
+  mounted() {
+    document.addEventListener("scroll", this.showScrollToTopButton);
+  }
 
   public scrollToTop() {
     window.scrollTo({
@@ -51,6 +64,12 @@ export default class App extends Vue {
       left: 0,
       behavior: "smooth"
     });
+  }
+
+  public showScrollToTopButton() {
+    document.body.scrollTop > 100 || document.documentElement.scrollTop > 100
+      ? (this.scrolled = true)
+      : (this.scrolled = false);
   }
 }
 </script>

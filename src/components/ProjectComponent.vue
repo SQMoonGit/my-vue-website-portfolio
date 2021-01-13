@@ -56,10 +56,11 @@
             </v-row>
             <v-row class="mx-2">
               • Hosted in Amazon Lambda to run on an hourly basis, storing the
-              data in an S3 bucket for API calls
+              data in DynamoDB tables
             </v-row>
             <v-row class="mx-2">
-              • Separate script calls API and analyzes data to desired metrics
+              • Separate Lambda script retrieves data from DynamoDB and analyzes
+              data to desired metrics
             </v-row>
             <v-row class="mx-2 justify-end">
               <router-link class="link" :to="{ name: 'Twitch Stats' }">
