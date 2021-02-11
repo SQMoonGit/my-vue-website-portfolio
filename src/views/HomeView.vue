@@ -40,8 +40,7 @@
         </v-col>
       </v-row>
     </v-card>
-
-    <project-component></project-component>
+    <project-component />
   </div>
 </template>
 
