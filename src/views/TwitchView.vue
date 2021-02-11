@@ -4,14 +4,13 @@
 
     <p>Add some cards and fancy stuff here</p>
 
-    <!-- <v-btn
+    <v-btn
       id="github-button"
       target="_blank"
       rel="noopener noreferrer"
       href="https://github.com"
     >
-      Github Repo
-    </v-btn> -->
+    </v-btn>
 
     <!-- <v-card>
       <GChart
@@ -51,8 +50,10 @@ export default class TwitchView extends Vue {
 
 <style lang="scss">
 #github-button {
-  background-image: url(../assets/githubCat.jpg);
-  background-color: inherit;
+  background-image: url(../assets/githubCat.svg);
+  background-color: royalblue;
+  height: 120px;
+  width: 140px;
   box-shadow: none;
 }
 </style>
