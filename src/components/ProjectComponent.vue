@@ -1,5 +1,5 @@
 <template>
-  <v-card class="ma-4">
+  <v-card class="d-inline-block projects-section">
     <v-card-title class="d-block pt-2 pb-0">Projects</v-card-title>
     <v-expansion-panels>
       <v-expansion-panel>
@@ -11,9 +11,8 @@
           <v-card class="my-2" :elevation="0">
             <v-col>
               <v-row class="mx-2">
-                • Project sponsored by a construction firm called Tella Firma to
-                create a control system for them to automate their slab-lifting
-                process
+                • Project sponsored by construction firm Tella Firma to create a
+                control system to automate their slab-lifting process
               </v-row>
               <v-row class="mx-2">
                 • Worked with a separate mechanical engineering team to produce
@@ -25,7 +24,7 @@
               </v-row>
               <v-row class="mx-2">
                 • Data management was coded in C, data upload and download in
-                Python, and GCP utilized for data storage and host maintenance
+                Python, and GCP for data storage and host maintenance
               </v-row>
               <v-row class="mx-2">
                 • Awarded 1st place in both Fall and Spring UTDesign Expos
@@ -112,6 +111,11 @@ export default class ProjectComponent extends Vue {}
 </script>
 
 <style lang="scss">
+.projects-section {
+  width: 60%;
+  margin: 4rem 4rem 0 4rem;
+}
+
 .link {
   text-decoration: none;
 

@@ -7,7 +7,7 @@
       </v-container>
     </v-parallax>
 
-    <v-card class="pb-1 mx-4 mb-4">
+    <v-card class="d-inline-block sections">
       <v-card-title class="d-block pt-2 pb-0">About Me</v-card-title>
       <v-row class="ma-auto">
         <v-col class="ma-auto"
@@ -18,7 +18,7 @@
       </v-row>
     </v-card>
 
-    <v-card class="pb-1 ma-4">
+    <v-card class="d-inline-block sections">
       <v-card-title class="d-block pt-2">Skills</v-card-title>
       <v-row class="ma-auto">
         <v-col
@@ -92,10 +92,10 @@ export default class HomeView extends Vue {
 </script>
 
 <style lang="scss">
-.project {
-  display: flex;
-  align-items: baseline;
-  padding-left: 1rem;
+.sections {
+  width: 60%;
+  margin: 4rem 4rem 0 4rem;
+  padding-bottom: 1rem;
 }
 
 .skill-cards {
