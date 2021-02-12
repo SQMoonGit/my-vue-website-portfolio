@@ -2,8 +2,9 @@
   <div>
     <v-card min-height="260">
       <v-row no-gutters>
-        <v-col>
+        <v-col :loading="isLoading">
           <v-autocomplete
+            id="weapons"
             hide-details
             hide-selected
             hide-no-data
@@ -12,7 +13,6 @@
             item-text="name"
             :prepend-inner-icon="'mhw-' + weaponSelected.type"
             v-model="weaponSelected"
-            :loading="isLoading"
           >
           </v-autocomplete>
 
@@ -31,11 +31,11 @@
             item-text="name"
             :prepend-inner-icon="'mhw-' + armorType"
             v-model="armorSelected[armorType]"
-            :loading="isLoading"
           >
           </v-autocomplete>
 
           <v-autocomplete
+            id="armorset"
             v-if="isArmorSet"
             hide-details
             hide-selected
@@ -45,7 +45,6 @@
             item-text="name"
             :prepend-inner-icon="'mhw-armorset'"
             v-model="armorSetSelected"
-            :loading="isLoading"
           >
           </v-autocomplete>
 
@@ -63,9 +62,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
-import { Weapons } from "../model/weapons";
-import { Armor } from "../model/armor";
-import { Armorsets } from "../model/armorsets";
+import { Weapons, Armor, Armorsets } from "../model/mhw";
 
 @Component({})
 export default class EquipComponent extends Vue {

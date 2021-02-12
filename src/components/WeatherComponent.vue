@@ -102,7 +102,7 @@ export default class WeatherComponent extends Vue {
       )
       .then(
         result => {
-          if (result.ok && result.data) {
+          if (result.status === 200 && result.data) {
             this.forecast = result.data;
           } else {
             throw new Error(result.statusText);
@@ -124,7 +124,7 @@ export default class WeatherComponent extends Vue {
       )
       .then(
         result => {
-          if (result.ok && result.data) {
+          if (result.status === 200 && result.data) {
             this.futureForecast = result.data;
             this.fiveDayForecast = [];
             this.futureForecast["list"].forEach(

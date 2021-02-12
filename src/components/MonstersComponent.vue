@@ -20,23 +20,35 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
-import { Monster } from "../model/monsters";
+import { Vue, Component, Watch, Prop } from "vue-property-decorator";
+import { Monster } from "../model/mhw";
+import { mhwURL } from "../utils/constants";
 
 @Component({})
 export default class MonstersComponent extends Vue {
-  @Prop() private monsterList!: Monster[];
-
+  private monsterList!: Monster[];
   private isLoading: boolean = false;
   private model: string = "";
   private monsterNames: string[] = [];
 
   created() {
-    this.monsterList.forEach((value: Monster, index: number) => {
-      if (value) {
-        this.monsterNames.push(value.name);
-      }
-    });
+    //API call for monsters
+    this.axios
+      .get(`${mhwURL}/monsters`)
+      .then(response => {
+        if (response.status === 200 && response.data) {
+          this.monsterList = response.data;
+          this.monsterList.forEach((value: Monster, index: number) => {
+            if (value) {
+              this.monsterNames.push(value.name);
+            }
+          });
+        }
+      })
+      .catch(error => {
+        alert(error.body.error);
+        console.log("[ERROR] - GET/monsters");
+      });
   }
 }
 </script>

@@ -10,7 +10,7 @@
       </v-col>
 
       <v-col>
-        <monsters-component :monster-lists="monsterList"></monsters-component>
+        <monsters-component></monsters-component>
       </v-col>
     </v-row>
 
@@ -24,10 +24,8 @@
 import { Component, Vue, Watch } from "vue-property-decorator";
 import EquipComponent from "../components/EquipComponent.vue";
 import MonstersComponent from "../components/MonstersComponent.vue";
-import { Monster } from "../model/monsters";
-import { Armor } from "../model/armor";
-import { Weapons } from "../model/weapons";
-import { Armorsets } from "../model/armorsets";
+import { Monster, Armor, Weapons, Armorsets } from "../model/mhw";
+import { mhwURL } from "../utils/constants";
 
 @Component({
   components: {
@@ -38,7 +36,6 @@ import { Armorsets } from "../model/armorsets";
 export default class MHWView extends Vue {
   private isLoading?: boolean = false;
   private model: string = "";
-  private mhwURL: string = "https://mhw-db.com";
 
   private monsterList: Monster[] = [];
   private armorList: Armor[] = [];
@@ -47,64 +44,43 @@ export default class MHWView extends Vue {
 
   created() {
     //API call for armor
-    this.$http.get(`${this.mhwURL}/armor`).then(
-      result => {
-        if (result.ok && result.data) {
-          this.armorList = result.data;
-        } else {
-          throw new Error(result.statusText);
+    this.axios
+      .get(`${mhwURL}/armor`)
+      .then(response => {
+        if (response.status === 200 && response.data) {
+          this.armorList = response.data;
         }
-      },
-      error => {
+      })
+      .catch(error => {
         alert(error.body.error);
         console.log("[ERROR] - GET/armor");
-      }
-    );
+      });
 
     //API call for weapons
-    this.$http.get(`${this.mhwURL}/weapons`).then(
-      result => {
-        if (result.ok && result.data) {
-          this.weaponsList = result.data;
-        } else {
-          throw new Error(result.statusText);
+    this.axios
+      .get(`${mhwURL}/weapons`)
+      .then(response => {
+        if (response.status === 200 && response.data) {
+          this.weaponsList = response.data;
         }
-      },
-      error => {
+      })
+      .catch(error => {
         alert(error.body.error);
-        console.log("[ERROR] - GET/weapons");
-      }
-    );
+        console.log("[ERROR] - GET/wepons");
+      });
 
     //API call for armorsets
-    this.$http.get(`${this.mhwURL}/armor/sets`).then(
-      result => {
-        if (result.ok && result.data) {
-          this.armorSets = result.data;
-        } else {
-          throw new Error(result.statusText);
+    this.axios
+      .get(`${mhwURL}/armor/sets`)
+      .then(response => {
+        if (response.status === 200 && response.data) {
+          this.armorSets = response.data;
         }
-      },
-      error => {
+      })
+      .catch(error => {
         alert(error.body.error);
         console.log("[ERROR] - GET/armor/sets");
-      }
-    );
-
-    //API call for monsters
-    this.$http.get(`${this.mhwURL}/monsters`).then(
-      result => {
-        if (result.ok && result.data) {
-          this.monsterList = result.data;
-        } else {
-          throw new Error(result.statusText);
-        }
-      },
-      error => {
-        alert(error.body.error);
-        console.log("[ERROR] - GET/monsters");
-      }
-    );
+      });
   }
 }
 </script>
