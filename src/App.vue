@@ -26,7 +26,17 @@
           <router-view />
         </v-container>
       </v-main>
-      <v-footer id="footer">Developed and designed by Steven Moon</v-footer>
+      <v-footer id="footer">
+        <a
+          id="footer-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/SQMoonGit/my-vue-website-portfolio"
+        >
+          <v-icon color="blue">fa-laptop-code</v-icon>
+          Developed and designed by Steven Moon
+        </a>
+      </v-footer>
     </v-app>
 
     <v-btn
@@ -87,6 +97,13 @@ export default class App extends Vue {
 #footer {
   background-color: inherit;
   justify-content: center;
+
+  #footer-link {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 #scroll-button {
