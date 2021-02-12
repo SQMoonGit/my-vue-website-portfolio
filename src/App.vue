@@ -8,11 +8,11 @@
           </router-link>
         </v-btn>
 
-        <!-- <v-btn rounded text>
+        <v-btn rounded text>
           <router-link class="white--text" :to="{ name: 'MHW Builder' }">
             MHW Builder
           </router-link>
-        </v-btn> -->
+        </v-btn>
 
         <v-btn rounded text>
           <router-link class="white--text" :to="{ name: 'Twitch Stats' }">

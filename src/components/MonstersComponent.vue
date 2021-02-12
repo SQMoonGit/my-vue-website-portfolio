@@ -23,7 +23,7 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { Monster } from "../model/monsters";
 
-@Component
+@Component({})
 export default class MonstersComponent extends Vue {
   @Prop() private monsterList!: Monster[];
 

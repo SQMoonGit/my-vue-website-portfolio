@@ -21,10 +21,7 @@
     <v-card class="d-inline-block sections">
       <v-card-title class="d-block pt-2">Skills</v-card-title>
       <v-row class="ma-auto">
-        <v-col
-          class="pa-0 pb-2 skill-cards"
-          v-for="(value, name, index) in skills"
-        >
+        <v-col class="pa-0 pb-2" v-for="(value, name, index) in skills">
           <v-card :elevation="0">
             <v-card-title class="py-0">
               <v-icon class="mr-2">{{ codeIcons[index] }}</v-icon>
@@ -95,9 +92,5 @@ export default class HomeView extends Vue {
   width: 60%;
   margin: 4rem 4rem 0 4rem;
   padding-bottom: 1rem;
-}
-
-.skill-cards {
-  box-shadow: 4px 12px 10px -16px rgb(105, 98, 98);
 }
 </style>

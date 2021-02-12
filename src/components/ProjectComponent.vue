@@ -108,14 +108,14 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-@Component
+@Component({})
 export default class ProjectComponent extends Vue {}
 </script>
 
 <style lang="scss">
 .projects-section {
   width: 60%;
-  margin: 4rem 4rem 0 4rem;
+  margin: 4rem;
 }
 
 .link {

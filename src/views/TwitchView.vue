@@ -29,6 +29,7 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 // @Component({
 //   components: { GChart }
 // })
+@Component({})
 export default class TwitchView extends Vue {
   private chartData = [
     ["Year", "Sales", "Expenses", "Profit"],

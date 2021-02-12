@@ -2,7 +2,11 @@
   <div>
     <v-row no-gutters>
       <v-col>
-        <!-- <equip-component :armor-list="armorList" :weapons-list="weaponsList" :armor-sets="armorSets"></equip-component> -->
+        <equip-component
+          :armor-list="armorList"
+          :weapons-list="weaponsList"
+          :armor-sets="armorSets"
+        ></equip-component>
       </v-col>
 
       <v-col>
