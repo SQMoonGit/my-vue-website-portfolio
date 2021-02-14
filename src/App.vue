@@ -78,7 +78,7 @@ export default class App extends Vue {
   }
 
   public showScrollToTopButton() {
-    document.body.scrollTop > 100 || document.documentElement.scrollTop > 100
+    document.body.scrollTop > 250 || document.documentElement.scrollTop > 250
       ? (this.scrolled = true)
       : (this.scrolled = false);
   }

@@ -1,6 +1,6 @@
 <template>
   <v-container id="projects-section" class="d-inline-block">
-    <v-card-title class="d-block pt-2 pb-0">Projects</v-card-title>
+    <v-card-title class="projects-title">Projects</v-card-title>
     <v-card>
       <v-card-title class="ma-0 pb-0">Senior Design Project</v-card-title>
       <v-card-subtitle class="project-details pb-0"
@@ -8,9 +8,9 @@
       >
       <v-row>
         <v-col class="project-images">
-          <v-img src="../assets/slab_diagram.png"></v-img>
+          <v-img src="../assets/slab-gif.gif"></v-img>
         </v-col>
-        <v-col class="project-details">
+        <v-col class="project-details diagram">
           <v-row class="mx-2">
             • Project sponsored by construction firm Tella Firma to create a
             control system to automate their slab-lifting process
@@ -30,8 +30,8 @@
           <v-row class="mx-2">
             • Awarded 1st place in both Fall and Spring UTDesign Expos
           </v-row>
-          <v-img width="60px" height="60px" src="../assets/slab-gif.gif">
-          </v-img>
+          <br />
+          <v-img src="../assets/slab_diagram.png"></v-img>
         </v-col>
       </v-row>
     </v-card>
@@ -112,6 +112,14 @@ export default class ProjectComponent extends Vue {}
 #projects-section {
   width: 60%;
   margin: 4rem;
+  padding: 0;
+
+  .projects-title {
+    background-color: #1e1e1e;
+    border-radius: 4px;
+    display: block;
+    padding: 8px 16px 0 16px;
+  }
 
   .project-images {
     width: 50%;
@@ -119,6 +127,12 @@ export default class ProjectComponent extends Vue {}
 
   .project-details {
     text-align: start;
+    margin-top: 0;
+    padding: 0 24px;
+
+    &.diagram {
+      width: 50%;
+    }
   }
 }
 
