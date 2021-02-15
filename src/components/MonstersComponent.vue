@@ -20,29 +20,32 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch, Prop } from "vue-property-decorator";
+import { Vue, Component, Watch } from "vue-property-decorator";
 import { Monster } from "../model/mhw";
 import { mhwURL } from "../utils/constants";
 
 @Component({})
 export default class MonstersComponent extends Vue {
-  private monsterList!: Monster[];
+  private monsterList: Map<string, Monster> = new Map<string, Monster>();
+  private monsterNames: string[] = [];
   private isLoading: boolean = false;
   private model: string = "";
-  private monsterNames: string[] = [];
 
   created() {
     //API call for monsters
+    this.isLoading = true;
     this.axios
       .get(`${mhwURL}/monsters`)
       .then(response => {
         if (response.status === 200 && response.data) {
-          this.monsterList = response.data;
-          this.monsterList.forEach((value: Monster, index: number) => {
+          let temp = response.data;
+          temp.forEach(value => {
             if (value) {
+              this.monsterList.set(value.name, value);
               this.monsterNames.push(value.name);
             }
           });
+          this.isLoading = false;
         }
       })
       .catch(error => {

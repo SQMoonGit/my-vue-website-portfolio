@@ -5,6 +5,7 @@
         <v-col :loading="isLoading">
           <v-autocomplete
             id="weapons"
+            cache-items
             hide-details
             hide-selected
             hide-no-data
@@ -12,6 +13,7 @@
             :items="weaponsList"
             item-text="name"
             :prepend-inner-icon="'mhw-' + weaponSelected.type"
+            :loading="isLoading"
             v-model="weaponSelected"
           >
           </v-autocomplete>
@@ -19,6 +21,7 @@
           <v-autocomplete
             v-if="!isArmorSet"
             v-for="(armorType, index) in armorPieces"
+            cache-items
             hide-details
             hide-selected
             hide-no-data
@@ -30,6 +33,7 @@
             "
             item-text="name"
             :prepend-inner-icon="'mhw-' + armorType"
+            :loading="isLoading"
             v-model="armorSelected[armorType]"
           >
           </v-autocomplete>
@@ -37,6 +41,7 @@
           <v-autocomplete
             id="armorset"
             v-if="isArmorSet"
+            cache-items
             hide-details
             hide-selected
             hide-no-data
@@ -44,6 +49,7 @@
             :items="armorSets"
             item-text="name"
             :prepend-inner-icon="'mhw-armorset'"
+            :loading="isLoading"
             v-model="armorSetSelected"
           >
           </v-autocomplete>
@@ -61,14 +67,15 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from "vue-property-decorator";
+import { Vue, Component, Watch } from "vue-property-decorator";
 import { Weapons, Armor, Armorsets } from "../model/mhw";
+import { mhwURL } from "../utils/constants";
 
 @Component({})
 export default class EquipComponent extends Vue {
-  @Prop() private armorSets!: Armorsets[];
-  @Prop() private weaponsList!: Weapons[];
-  @Prop() private armorList!: Armor[];
+  private armorSets: Armorsets[] = [];
+  private weaponsList: Weapons[] = [];
+  private armorList: Armor[] = [];
 
   private isLoading: boolean = false;
   private isArmorSet: boolean = false;
@@ -79,10 +86,52 @@ export default class EquipComponent extends Vue {
   private weaponSelected: Weapons = new Weapons();
 
   created() {
+    this.isLoading = true;
     this.armorPieces = ["head", "chest", "gloves", "waist", "legs"];
     this.armorPieces.forEach((value: string) => {
       this.$set(this.armorSelected, value, "");
     });
+
+    //API call for armor
+    this.axios
+      .get(`${mhwURL}/armor`)
+      .then(response => {
+        if (response.status === 200 && response.data) {
+          this.armorList = response.data;
+        }
+      })
+      .catch(error => {
+        alert(error.body.error);
+        console.log("[ERROR] - GET/armor");
+      });
+
+    //API call for weapons
+    this.axios
+      .get(`${mhwURL}/weapons`)
+      .then(response => {
+        if (response.status === 200 && response.data) {
+          this.weaponsList = response.data;
+        }
+      })
+      .catch(error => {
+        alert(error.body.error);
+        console.log("[ERROR] - GET/weapons");
+      });
+
+    //API call for armorsets
+    this.axios
+      .get(`${mhwURL}/armor/sets`)
+      .then(response => {
+        if (response.status === 200 && response.data) {
+          this.armorSets = response.data;
+        }
+        this.isLoading = false;
+      })
+      .catch(error => {
+        alert(error.body.error);
+        console.log("[ERROR] - GET/armor/sets");
+        this.isLoading = false;
+      });
   }
 
   @Watch("armorSetSelected", { immediate: true, deep: true })
