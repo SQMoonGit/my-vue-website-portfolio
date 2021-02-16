@@ -24,5 +24,5 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
-###Note
+### Note
 All data and images related to Monster Hunter are property of Capcom
