@@ -9,13 +9,13 @@
       </v-col>
 
       <v-col id="monster-selection">
-        <monsters-component></monsters-component>
+        <monsters-component @monsterSent="monsterDisplay"></monsters-component>
       </v-col>
     </v-row>
 
     <v-card>
       <v-row>
-        <!-- <v-col>Skills</v-col> -->
+        <v-col>Skills</v-col>
         <v-col>
           Weapon: Type {{ weapon.type }} Attack:
           {{ weapon.attack }}
@@ -30,6 +30,7 @@
           {{ resistances.get("ice") }} thunder -
           {{ resistances.get("thunder") }} water -{{ resistances.get("water") }}
         </v-col>
+        <v-col>Monster</v-col>
       </v-row>
       Some information and description and stats and stuff here
     </v-card>
@@ -37,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { Weapons, Armor } from "@/model/mhw";
+import { Weapons, Armor, Monster } from "@/model/mhw";
 import { Component, Vue, Watch } from "vue-property-decorator";
 import EquipComponent from "../components/EquipComponent.vue";
 import MonstersComponent from "../components/MonstersComponent.vue";
@@ -52,6 +53,7 @@ export default class MHWView extends Vue {
   private isLoading?: boolean = false;
   private weapon: Weapons = new Weapons();
   private armor: Map<string, Armor> = new Map<string, Armor>();
+  private monster: Monster = new Monster();
 
   private totalDefense: number = 0;
   private resistances: Map<string, number> = new Map<string, number>([
@@ -85,6 +87,10 @@ export default class MHWView extends Vue {
         this.resistances.set(key, value + x.resistances[`${key}`]);
       });
     });
+  }
+
+  public monsterDisplay(value: Monster) {
+    this.monster = value;
   }
 }
 </script>

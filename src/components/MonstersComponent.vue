@@ -8,7 +8,7 @@
         return-object
         :items="monsterNames"
         :prepend-inner-icon="'mhw-' + model.toLowerCase()"
-        v-model="model"
+        @input="sendMonsterData($event)"
         :loading="isLoading"
         class="monsters white--text col-auto"
       >
@@ -59,6 +59,11 @@ export default class MonstersComponent extends Vue {
       let temp = this.model.replace(" ", "_");
       return require("@/assets/mhw_images/" + temp + ".png");
     }
+  }
+
+  public sendMonsterData(e: any) {
+    this.model = e;
+    this.$emit("monsterSent", this.monsterList.get(this.model));
   }
 }
 </script>
