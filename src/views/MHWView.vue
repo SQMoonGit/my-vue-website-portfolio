@@ -1,14 +1,14 @@
 <template>
   <div>
     <v-row no-gutters>
-      <v-col>
+      <v-col id="equip-selection">
         <equip-component
           @weaponSent="weaponDisplay"
           @armorSent="armorDisplay"
         ></equip-component>
       </v-col>
 
-      <v-col>
+      <v-col id="monster-selection">
         <monsters-component></monsters-component>
       </v-col>
     </v-row>
@@ -19,7 +19,7 @@
         <v-col>
           Weapon: Type {{ weapon.type }} Attack:
           {{ weapon.attack }}
-          Sharpness: {{ weapon.durability[0] }}
+          Sharpness: {{ weapon.durability }}
           <!-- <div>{{}}</div> -->
           Rarity: {{ weapon.rarity }}
         </v-col>
@@ -78,6 +78,7 @@ export default class MHWView extends Vue {
     ]);
     this.armor = value;
     this.totalDefense = 0;
+
     this.armor.forEach(x => {
       this.totalDefense += x.defense["base"];
       this.resistances.forEach((value, key) => {
@@ -88,4 +89,8 @@ export default class MHWView extends Vue {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+#monster-selection {
+  max-width: 50%;
+}
+</style>

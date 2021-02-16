@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card min-height="260">
+    <v-card min-height="500">
       <v-autocomplete
         hide-details
         hide-selected
@@ -14,13 +14,13 @@
       >
       </v-autocomplete>
 
-      Insert Monster picture here
+      <v-img contain max-height="500px" :src="getImage"></v-img>
     </v-card>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch } from "vue-property-decorator";
+import { Vue, Component } from "vue-property-decorator";
 import { Monster } from "../model/mhw";
 import { mhwURL } from "../utils/constants";
 
@@ -52,6 +52,13 @@ export default class MonstersComponent extends Vue {
         alert(error.body.error);
         console.log("[ERROR] - GET/monsters");
       });
+  }
+
+  get getImage() {
+    if (this.model) {
+      let temp = this.model.replace(" ", "_");
+      return require("@/assets/mhw_images/" + temp + ".png");
+    }
   }
 }
 </script>

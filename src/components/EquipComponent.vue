@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card min-height="260">
+    <v-card min-height="500">
       <v-row no-gutters>
         <v-col :loading="isLoading">
           <v-autocomplete
