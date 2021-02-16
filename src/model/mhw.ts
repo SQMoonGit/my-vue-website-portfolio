@@ -6,7 +6,7 @@ export class Armor {
   public rank!: string;
   public rarity!: number;
   public defense!: object;
-  public resis!: object;
+  public resistances!: object;
   public slots!: object[];
   public attrib!: object;
   public skills!: object[];
@@ -48,9 +48,9 @@ export class Weapons {
   public name!: string;
   public type!: string;
   public rarity!: number;
-  public att!: object;
+  public attack!: object;
   public elderseal!: any;
-  public attrib!: object;
+  public attributes!: object;
   public damageType!: string;
   public durability!: object[];
   public slots!: object[];

@@ -14,7 +14,7 @@
             item-text="name"
             :prepend-inner-icon="'mhw-' + weaponSelected.type"
             :loading="isLoading"
-            v-model="weaponSelected"
+            @input="sendWeaponSelected($event)"
           >
           </v-autocomplete>
 
@@ -34,7 +34,7 @@
             item-text="name"
             :prepend-inner-icon="'mhw-' + armorType"
             :loading="isLoading"
-            v-model="armorSelected[armorType]"
+            @input="sendArmorSelected(armorType, $event)"
           >
           </v-autocomplete>
 
@@ -50,7 +50,7 @@
             item-text="name"
             :prepend-inner-icon="'mhw-armorset'"
             :loading="isLoading"
-            v-model="armorSetSelected"
+            @input="updateArmor($event)"
           >
           </v-autocomplete>
 
@@ -81,7 +81,7 @@ export default class EquipComponent extends Vue {
   private isArmorSet: boolean = false;
   private armorPieces: string[] = [];
 
-  private armorSelected: object = {};
+  private armorSelected: Map<string, Armor> = new Map<string, Armor>();
   private armorSetSelected: Armorsets = new Armorsets();
   private weaponSelected: Weapons = new Weapons();
 
@@ -134,15 +134,26 @@ export default class EquipComponent extends Vue {
       });
   }
 
-  @Watch("armorSetSelected", { immediate: true, deep: true })
-  public updateArmor() {
+  public sendArmorSelected(armorType: string, e: any) {
+    this.armorSelected.set(armorType, e);
+    this.$emit("armorSent", this.armorSelected);
+  }
+
+  public sendWeaponSelected(e: any) {
+    this.weaponSelected = e;
+    this.$emit("weaponSent", this.weaponSelected);
+  }
+
+  public updateArmor(e: any) {
+    this.armorSetSelected = e;
     if (this.isArmorSet) {
       this.armorPieces.forEach((type: string) => {
         this.armorSetSelected.pieces.forEach((armor: Armor) => {
-          this.$set(this.armorSelected, type, armor);
+          this.armorSelected.set(type, armor);
         });
       });
     }
+    this.$emit("armorSent", this.armorSelected);
   }
 }
 </script>
