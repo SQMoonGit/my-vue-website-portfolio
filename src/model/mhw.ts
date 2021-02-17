@@ -1,3 +1,20 @@
+export class Skills {
+  public description!: string;
+  public id!: number;
+  public level!: number;
+  public modifiers!: object;
+  public skill!: number;
+  public skillName!: string;
+
+  constructor() {}
+}
+
+export class weaponElements {
+  public type!: string;
+  public damage!: number;
+  public hidden!: boolean;
+}
+
 export class Armor {
   public id!: number;
   public slug!: string;
@@ -9,9 +26,8 @@ export class Armor {
   public resistances!: object;
   public slots!: object[];
   public attrib!: object;
-  public skills!: object[];
+  public skills!: Skills[];
   public armorSet!: object;
-  public assets!: object;
   public crafting!: object;
 
   constructor() {}
@@ -21,7 +37,7 @@ export class Armorsets {
   public id!: number;
   public name!: string;
   public rank!: string;
-  public pieces!: object[];
+  public pieces!: Armor[];
   public bonus!: object;
 
   constructor() {}
@@ -55,9 +71,6 @@ export class Weapons {
   public durability!: object[];
   public slots!: object[];
   public crafting!: object;
-  public craftingMat!: object[];
-  public upgradeMat!: object[];
-  public assets!: object;
-
+  public elements!: weaponElements[];
   constructor() {}
 }
