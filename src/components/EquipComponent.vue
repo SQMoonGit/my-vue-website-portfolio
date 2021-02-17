@@ -147,10 +147,9 @@ export default class EquipComponent extends Vue {
   public updateArmor(e: any) {
     this.armorSetSelected = e;
     if (this.isArmorSet) {
-      this.armorPieces.forEach((type: string) => {
-        this.armorSetSelected.pieces.forEach((armor: Armor) => {
-          this.armorSelected.set(type, armor);
-        });
+      this.armorSetSelected.pieces.forEach((armor: Armor) => {
+        !this.armorSelected.has(armor.type) &&
+          this.armorSelected.set(armor.type, armor);
       });
     }
     this.$emit("armorSent", this.armorSelected);
