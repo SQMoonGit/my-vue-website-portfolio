@@ -8,11 +8,26 @@ export class Skills {
 
   constructor() {}
 }
-
 export class weaponElements {
   public type!: string;
   public damage!: number;
   public hidden!: boolean;
+}
+
+export class Weapons {
+  public id!: number;
+  public name!: string;
+  public type!: string;
+  public rarity!: number;
+  public attack!: object;
+  public elderseal!: any;
+  public attributes!: object;
+  public damageType!: string;
+  public durability!: object[];
+  public slots!: object[];
+  public crafting!: object;
+  public elements!: weaponElements[];
+  constructor() {}
 }
 
 export class Armor {
@@ -49,28 +64,45 @@ export class Monster {
   public type!: string;
   public species!: string;
   public descrip!: string;
-  public elements!: [];
-  public ailments!: object[];
-  public locations!: object[];
-  public resis!: object[];
-  public weak!: object[];
+  public elements!: string[];
+  public ailments!: Ailments[];
+  public locations!: Locations[];
+  public resis!: MonsterResis[];
+  public weak!: MonsterWeak[];
   public rewards!: object[];
 
   constructor() {}
 }
 
-export class Weapons {
+export class Ailments {
   public id!: number;
   public name!: string;
-  public type!: string;
-  public rarity!: number;
-  public attack!: object;
-  public elderseal!: any;
-  public attributes!: object;
-  public damageType!: string;
-  public durability!: object[];
-  public slots!: object[];
-  public crafting!: object;
-  public elements!: weaponElements[];
+  public descrip!: string;
+  public protection!: object;
+  public recovery!: object;
+
+  constructor() {}
+}
+
+export class Locations {
+  public id!: number;
+  public name!: string;
+  public zones!: number;
+
+  constructor() {}
+}
+
+export class MonsterResis {
+  public condition!: string;
+  public element!: string;
+
+  constructor() {}
+}
+
+export class MonsterWeak {
+  public condition!: string;
+  public element!: string;
+  public stars!: number;
+
   constructor() {}
 }
