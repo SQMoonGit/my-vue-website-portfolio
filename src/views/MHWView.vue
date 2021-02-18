@@ -13,7 +13,7 @@
       </v-col>
     </v-row>
 
-    <v-card>
+    <v-card class="details">
       <v-row>
         <v-col class="skill-details">
           <v-simple-table dense>
@@ -100,10 +100,34 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(v, i) of monster">
-                  <td>{{ i }}</td>
-                  <td>{{ v }}</td>
+                <tr>
+                  <td>Type</td>
+                  <td>{{ monster.type }}</td>
                 </tr>
+                <tr>
+                  <td>Species</td>
+                  <td>{{ monster.species }}</td>
+                </tr>
+                <tr>
+                  <td>Elements</td>
+                  <td>{{ monster.elements }}</td>
+                </tr>
+                <tr>
+                  <td>Description</td>
+                  <td>{{ monster.description }}</td>
+                </tr>
+                <!-- <tr>
+                  <td>Ailments</td>
+                  <td>{{ monster.ailments }}</td>
+                </tr>
+                <tr>
+                  <td>Locations</td>
+                  <td>{{ monster.locations }}</td>
+                </tr>
+                <tr>
+                  <td>Resistances</td>
+                  <td>{{ monster.resis }}</td>
+                </tr> -->
               </tbody>
             </template>
           </v-simple-table>

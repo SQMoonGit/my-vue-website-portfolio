@@ -42,7 +42,7 @@ export class Armor {
   public slots!: object[];
   public attrib!: object;
   public skills!: Skills[];
-  public armorSet!: object;
+  public armorSet!: Armorsets;
   public crafting!: object;
 
   constructor() {}

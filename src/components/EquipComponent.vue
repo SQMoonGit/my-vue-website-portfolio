@@ -58,8 +58,8 @@
         </v-col>
 
         <v-col>
-          better image here with weapons and armor and stuff
-          <v-img></v-img>
+          <!-- better image here with weapons and armor and stuff
+          <v-img></v-img> -->
         </v-col>
       </v-row>
     </v-card>
