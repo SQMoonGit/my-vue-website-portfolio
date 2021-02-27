@@ -21,6 +21,7 @@
           <v-autocomplete
             v-if="!isArmorSet"
             v-for="(armorType, index) in armorPieces"
+            :key="index"
             cache-items
             hide-details
             hide-selected

@@ -19,14 +19,22 @@ export class Weapons {
   public name!: string;
   public type!: string;
   public rarity!: number;
-  public attack!: object;
+  public attack!: Attack;
+  public displayAttack!: number;
   public elderseal!: any;
   public attributes!: object;
   public damageType!: string;
   public durability!: object[];
+  public sharpness!: object;
   public slots!: object[];
   public crafting!: object;
   public elements!: weaponElements[];
+  constructor() {}
+}
+
+export class Attack {
+  public display!: number;
+  public raw!: number;
   constructor() {}
 }
 

@@ -25,7 +25,7 @@
                 </tr>
               </thead>
               <tbody>
-                <v-tooltip bottom v-for="(v, i) in skills">
+                <v-tooltip bottom v-for="(v, i) in skills" :key="i">
                   <template v-slot:activator="{ on, attrs }">
                     <tr v-bind="attrs" v-on="on">
                       <td>{{ v.skillName }}</td>
@@ -50,7 +50,7 @@
               <tbody>
                 <tr>
                   <td>Attack</td>
-                  <td>{{ weapon.attack }}</td>
+                  <td>{{ weapon.displayAttack }}</td>
                 </tr>
                 <tr>
                   <td>Type</td>
@@ -58,11 +58,19 @@
                 </tr>
                 <tr>
                   <td>Sharpness</td>
-                  <td>{{ weapon.durability }}</td>
+                  <td>{{ weapon.sharpness }}</td>
                 </tr>
                 <tr>
                   <td>Rarity</td>
                   <td>{{ weapon.rarity }}</td>
+                </tr>
+                <tr>
+                  <td>Attributes</td>
+                  <td>{{ weapon.attributes }}</td>
+                </tr>
+                <tr>
+                  <td>elements</td>
+                  <td>{{ weapon.elements }}</td>
                 </tr>
               </tbody>
             </template>
@@ -82,7 +90,7 @@
                   <td>Defense</td>
                   <td>{{ totalDefense }}</td>
                 </tr>
-                <tr v-for="(v, i) of resistances.keys()">
+                <tr v-for="(v, i) of resistances.keys()" :key="i">
                   <td>{{ v }}</td>
                   <td>{{ resistances.get(v) }}</td>
                 </tr>
@@ -169,6 +177,8 @@ export default class MHWView extends Vue {
 
   public weaponDisplay(value: Weapons) {
     this.weapon = value;
+    this.weapon.displayAttack = this.weapon.attack.display;
+    this.weapon.sharpness = this.weapon.durability[0];
   }
 
   public armorDisplay(value: Map<string, Armor>) {
