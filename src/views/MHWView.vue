@@ -28,8 +28,8 @@
                 <v-tooltip bottom v-for="(v, i) in skills" :key="i">
                   <template v-slot:activator="{ on, attrs }">
                     <tr v-bind="attrs" v-on="on">
-                      <td>{{ v }}</td>
-                      <td>{{ i }}</td>
+                      <td>{{ v.skillName }}</td>
+                      <td>{{ v.level }}</td>
                     </tr>
                   </template>
                   <span>{{ v.description }}</span>
@@ -162,9 +162,7 @@ export default class MHWView extends Vue {
   private weapon: Weapons = new Weapons();
   private armor: Map<string, Armor> = new Map<string, Armor>();
   private monster: Monster = new Monster();
-  // private skills: Skills[] = [];
-
-  private skills: Map<string, Skills> = new Map<string, Skills>();
+  private skills: Skills[] = [];
 
   private totalDefense: number = 0;
   private resistances: Map<string, number> = new Map<string, number>([
@@ -184,6 +182,7 @@ export default class MHWView extends Vue {
   }
 
   public armorDisplay(value: Map<string, Armor>) {
+    this.skills = [];
     let tempSkills = [];
 
     this.resistances = new Map<string, number>([
@@ -198,22 +197,18 @@ export default class MHWView extends Vue {
 
     this.armor.forEach(x => {
       x.skills.forEach((v: Skills) => {
-        tempSkills.push(v);
+        if (this.skills.length === 0 || !tempSkills.includes(v.skillName)) {
+          tempSkills.push(v.skillName);
+          this.skills.push(v);
+        } else {
+          let tempIndex = tempSkills.indexOf(v.skillName);
+          this.skills[tempIndex].level += v.level;
+        }
       });
       this.totalDefense += x.defense["base"];
       this.resistances.forEach((value, key) => {
         this.resistances.set(key, value + x.resistances[`${key}`]);
       });
-    });
-
-    tempSkills.forEach((v, i) => {
-      if (this.skills.has(v.skillName)) {
-        let temp = this.skills.get(v.skillName);
-        temp.level += v.level;
-        this.skills.set(v.skillName, temp);
-      } else {
-        this.skills.set(v.skillName, v);
-      }
     });
   }
 
