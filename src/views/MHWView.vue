@@ -64,13 +64,17 @@
                   <td>Rarity</td>
                   <td>{{ weapon.rarity }}</td>
                 </tr>
-                <tr>
+                <tr v-if="weapon.attributes">
                   <td>Attributes</td>
                   <td>{{ weapon.attributes }}</td>
                 </tr>
-                <tr>
-                  <td>elements</td>
-                  <td>{{ weapon.elements }}</td>
+                <tr v-if="weapon.elements">
+                  <td>Elements</td>
+                  <td>
+                    <span v-for="element in weapon.elements">
+                      {{ element.type }}: {{ element.damage }}
+                    </span>
+                  </td>
                 </tr>
               </tbody>
             </template>
@@ -179,6 +183,12 @@ export default class MHWView extends Vue {
     this.weapon = value;
     this.weapon.displayAttack = this.weapon.attack.display;
     this.weapon.sharpness = this.weapon.durability[0];
+    if (Object.keys(this.weapon.attributes).length === 0) {
+      this.weapon.attributes = null;
+    }
+    if (!this.weapon.elements.length) {
+      this.weapon.elements = null;
+    }
   }
 
   public armorDisplay(value: Map<string, Armor>) {
