@@ -1,50 +1,96 @@
 <template>
   <div>
-    <weather-component></weather-component>
+    <v-parallax style="height:100vh;" src="../assets/jellyfish.jpg">
+      <v-container class="text-h1">
+        Steven Moon
+        <p class="text-h5">Website Resume</p>
+      </v-container>
+    </v-parallax>
 
-    <v-card>
-
-      <v-card-title>Summary</v-card-title>
-
-      <v-row>
-        <v-col>Put information summary here I guess</v-col>
-      </v-row>
-
-    </v-card>
-
-    <v-card>
-      <v-card-title>Skills</v-card-title>
+    <v-card class="d-inline-block sections">
+      <v-card-title class="d-block pt-2 pb-0">About Me</v-card-title>
       <v-row class="ma-auto">
-        <v-col>test</v-col>
-        <v-col>tes</v-col>
-        <v-col>te</v-col>
-        <v-col>t</v-col>
-
+        <v-col class="ma-auto"
+          >I'm a front-end developer currently employed at Capital One. Started
+          my journey in web development 2019 and have been down the rabbit hole
+          ever since. Enjoying every bit of it and learning more everyday.
+        </v-col>
       </v-row>
     </v-card>
 
-    <v-card>
-      <v-card-title>Projects</v-card-title>
-      <v-row class="ma-auto">something</v-row>
-      <v-row class="ma-auto">anything</v-row>
-      <v-row class="ma-auto">nothing</v-row>
-      <v-row class="ma-auto">everything</v-row>
-
+    <v-card class="d-inline-block sections">
+      <v-card-title class="d-block pt-2">Skills</v-card-title>
+      <v-row class="ma-auto">
+        <v-col class="pa-0 pb-2" v-for="(value, name, index) in skills">
+          <v-card :elevation="0">
+            <v-card-title class="py-0">
+              <v-icon class="mr-2">{{ codeIcons[index] }}</v-icon>
+              {{ name }}
+            </v-card-title>
+            <v-list-item-content
+              v-for="skill in value"
+              class="px-4 py-0 body-2"
+            >
+              • {{ skill }}
+            </v-list-item-content>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-card>
-
+    <project-component />
   </div>
 </template>
 
 <script lang="ts">
-import {Component, Vue, Watch} from 'vue-property-decorator';
-import WeatherComponent from '@/components/WeatherComponent.vue'
+import { Component, Vue, Watch } from "vue-property-decorator";
+import ProjectComponent from "../components/ProjectComponent.vue";
 
 @Component({
-  components: {WeatherComponent}
+  components: {
+    ProjectComponent
+  }
 })
-export default class HomeView extends Vue{
+export default class HomeView extends Vue {
+  private languages = [
+    "Javascript/Typescript",
+    "HTML/CSS",
+    "Java",
+    "Python",
+    "SQL",
+    "C++"
+  ];
+  private frameworks = [
+    "Vue",
+    "Angular",
+    "Vuetify",
+    "Django",
+    "React",
+    "Spring"
+  ];
+  private applications = [
+    "VSCode",
+    "Webstorm",
+    "IntelliJ",
+    "Postman",
+    "Git",
+    "Jenkins",
+    "Slack",
+    "Jira",
+    "Docker"
+  ];
+  private skills = {
+    Programming: this.languages,
+    Software: this.applications,
+    Frameworks: this.frameworks
+  };
+  private codeIcons = ["fa-code", "fa-code-branch", "fa-desktop"];
 }
 </script>
 
 <style lang="scss">
+.sections {
+  width: 60%;
+  margin: 4rem 4rem 0 4rem;
+  padding-bottom: 1rem;
+}
 </style>

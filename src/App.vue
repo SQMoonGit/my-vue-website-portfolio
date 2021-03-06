@@ -1,81 +1,87 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <!-- <v-navigation-drawer :clipped="clipped" v-model="sideMenuExpansion" app disable-resize-watcher class="deep-purple darken-4">
-        <v-list>
-          <v-list-item link v-for="links in changeList" :keys="link">
-            {{links}}
-          </v-list-item>
-        </v-list>
-      </v-navigation-drawer> -->
-
-      <v-app-bar fixed app :clipped-left="clipped" color="blue darken-4">
-        <v-app-bar-nav-icon @click.stop="sideMenuExpansion =!sideMenuExpansion"></v-app-bar-nav-icon>
+      <v-app-bar app color="blue darken-4">
         <v-btn rounded text>
-          <router-link class="title white--text" :to="{name: 'home'}">Home</router-link>
-        </v-btn>
-        <v-btn rounded text>
-          <router-link class="white--text" :to="{name: 'MHW Builder'}">MHW Builder</router-link>
-        </v-btn>
-        <v-btn rounded text>
-          <router-link class="white--text" :to="{name: 'Twitch Stats'}">Twitch Stats</router-link>
+          <router-link class="title white--text" :to="{ name: 'home' }">
+            Home
+          </router-link>
         </v-btn>
 
-        <v-spacer></v-spacer>
+        <v-btn rounded text>
+          <router-link class="white--text" :to="{ name: 'MHW Builder' }">
+            MHW Builder
+          </router-link>
+        </v-btn>
 
-        <v-autocomplete
-            hide-no-data hide-selected hide-details
-            :loading="isLoading"
-            clearable class="white--text col-2" color="white"
-            placeholder="Type to Search" append-icon="fa-search">
-        </v-autocomplete>
+        <v-btn rounded text>
+          <router-link class="white--text" :to="{ name: 'Twitch Stats' }">
+            Twitch Stats
+          </router-link>
+        </v-btn>
       </v-app-bar>
 
-      <v-content class="pt-3">
+      <v-main>
         <v-container fluid class="pa-0">
-          <router-view/>
+          <router-view />
         </v-container>
-      </v-content>
+      </v-main>
+      <v-footer id="footer">
+        <a
+          id="footer-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/SQMoonGit/my-vue-website-portfolio"
+        >
+          <v-icon color="blue">fa-laptop-code</v-icon>
+          Developed and designed by Steven Moon
+        </a>
+      </v-footer>
     </v-app>
 
-    <v-btn fab bottom right fixed id="scroll-button" @click="scrollToTop">
+    <v-btn
+      fab
+      bottom
+      right
+      fixed
+      id="scroll-button"
+      v-if="scrolled"
+      @click="scrollToTop"
+    >
       <v-icon>fa-arrow-up</v-icon>
     </v-btn>
-
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue, Watch } from "vue-property-decorator";
 
 @Component({})
 export default class App extends Vue {
-
   private isLoading?: boolean = false;
-  // private model!: any;
-  // private items!: any;
+  private scrolled: boolean = false;
 
-  private currentPage?: string = 'home';
+  private currentPage?: string = "home";
   private sideMenuExpansion: boolean = true;
   private clipped: boolean = false;
 
-  // get changeList(){
-  //
-  // }
+  mounted() {
+    document.addEventListener("scroll", this.showScrollToTopButton);
+  }
 
-  public scrollToTop(){
+  public scrollToTop() {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth'
-    })
+      behavior: "smooth"
+    });
   }
-  //
-  // @Watch('$route.path', {deep:true, immediate: true})
-  // public changeCurrentPage(){
-  //   if(this.$route.path.includes())
-  // }
 
+  public showScrollToTopButton() {
+    document.body.scrollTop > 250 || document.documentElement.scrollTop > 250
+      ? (this.scrolled = true)
+      : (this.scrolled = false);
+  }
 }
 </script>
 
@@ -86,13 +92,24 @@ export default class App extends Vue {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
-#scroll-button{
-  background-color: #F9A825;
-  color: #DCE775;
+#footer {
+  background-color: inherit;
+  justify-content: center;
+
+  #footer-link {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
-
+#scroll-button {
+  height: 3rem;
+  width: 3rem;
+  background-color: #0d47a1;
+  color: #42a5f5;
+}
 </style>
