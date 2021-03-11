@@ -1,7 +1,7 @@
 <template>
   <v-container id="projects-section" class="d-inline-block">
     <v-card-title class="projects-title">Projects</v-card-title>
-    <v-card>
+    <v-card class="pb-2">
       <v-card-title class="ma-0 pb-0">Senior Design Project</v-card-title>
       <v-card-subtitle class="project-details pb-0"
         >Automated Slab-Lifting Control System</v-card-subtitle
@@ -36,7 +36,7 @@
       </v-row>
     </v-card>
 
-    <v-card>
+    <v-card class="pb-2">
       <v-card-title class="ma-0 pb-0">Twitch Data Analysis</v-card-title>
       <v-card-subtitle class="project-details pb-0"
         >Data visualization of Twitch's metrics
@@ -65,7 +65,7 @@
       </v-row>
     </v-card>
 
-    <v-card>
+    <v-card class="pb-2">
       <v-card-title class="ma-0 pb-0">AR Mobile App</v-card-title>
       <v-card-subtitle class="project-details pb-0"
         >Augmented Reality Globe Mobile App</v-card-subtitle
