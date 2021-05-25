@@ -1,9 +1,9 @@
 <template>
   <v-container id="projects-section" class="d-inline-block">
-    <v-card-title class="projects-title">Projects</v-card-title>
-    <v-card class="pb-2">
-      <v-card-title class="ma-0 pb-0">Senior Design Project</v-card-title>
-      <v-card-subtitle class="project-details pb-0"
+    <div class="projects-title">Projects</div>
+    <v-card class="">
+      <v-card-title class="ma-0 py-0">Senior Design Project</v-card-title>
+      <v-card-subtitle class="project-details"
         >Automated Slab-Lifting Control System</v-card-subtitle
       >
       <v-row>
@@ -11,26 +11,25 @@
           <v-img src="../assets/slab-gif.gif"></v-img>
         </v-col>
         <v-col class="project-details diagram">
-          <v-row class="mx-2">
-            • Project sponsored by construction firm Tella Firma to create a
-            control system to automate their slab-lifting process
-          </v-row>
-          <v-row class="mx-2">
-            • Worked with a separate mechanical engineering team to produce a
-            demo of the system
-          </v-row>
-          <v-row class="mx-2">
-            • Utilized Arduino Megas, a Raspberry Pi, and ultrasonic sensors for
-            the control system
-          </v-row>
-          <v-row class="mx-2">
-            • Data management was coded in C, data upload and download in
-            Python, and GCP for data storage and host maintenance
-          </v-row>
-          <v-row class="mx-2">
-            • Awarded 1st place in both Fall and Spring UTDesign Expos
-          </v-row>
-          <br />
+          <ul>
+            <li>
+              Project sponsored by construction firm Tella Firma to create a
+              control system to automate their slab-lifting process
+            </li>
+            <li>
+              Worked with a separate mechanical engineering team to produce a
+              demo of the system
+            </li>
+            <li>
+              Utilized Arduino Megas, a Raspberry Pi, and ultrasonic sensors for
+              the control system
+            </li>
+            <li>
+              Data management was coded in C, data upload and download in
+              Python, and GCP for data storage and host maintenance
+            </li>
+            <li>Awarded 1st place in both Fall and Spring UTDesign Expos</li>
+          </ul>
           <v-img src="../assets/slab_diagram.png"></v-img>
         </v-col>
       </v-row>
@@ -38,63 +37,57 @@
 
     <v-card class="pb-2">
       <v-card-title class="ma-0 pb-0">Twitch Data Analysis</v-card-title>
-      <v-card-subtitle class="project-details pb-0"
+      <v-card-subtitle class="project-details"
         >Data visualization of Twitch's metrics
       </v-card-subtitle>
       <v-row>
         <v-col class="project-images">Add graph here</v-col>
         <v-col class="project-details">
-          <v-row class="mx-2">
-            • Python script to retrieve data from Twitch's API to analyze data
-            from its streaming platform
-          </v-row>
-          <v-row class="mx-2">
-            • Hosted in Amazon Lambda to run on an hourly basis, storing the
-            data in DynamoDB tables
-          </v-row>
-          <v-row class="mx-2">
-            • Separate Lambda script retrieves data from DynamoDB and analyzes
-            data to desired metrics
-          </v-row>
-          <v-row class="mx-2 justify-end">
-            <router-link class="link" :to="{ name: 'Twitch Stats' }">
-              See charts
-            </router-link>
-          </v-row>
+          <ul>
+            <li>
+              Python script to retrieve data from Twitch's API to analyze data
+              from its streaming platform
+            </li>
+            <li>
+              Hosted in Amazon Lambda to run on an hourly basis, storing the
+              data in DynamoDB tables
+            </li>
+            <li>
+              Separate Lambda script retrieves data from DynamoDB and analyzes
+              data to desired metrics
+            </li>
+          </ul>
+          <router-link class="link" :to="{ name: 'Twitch Stats' }">
+            See charts
+          </router-link>
         </v-col>
       </v-row>
     </v-card>
 
     <v-card class="pb-2">
-      <v-card-title class="ma-0 pb-0">AR Mobile App</v-card-title>
-      <v-card-subtitle class="project-details pb-0"
-        >Augmented Reality Globe Mobile App</v-card-subtitle
+      <v-card-title class="ma-0 pb-0">Calendar App</v-card-title>
+      <v-card-subtitle class="project-details"
+        >React Native Calendar App</v-card-subtitle
       >
       <v-row>
+        <v-col class="project-images">Add pic here</v-col>
         <v-col class="project-details">
-          <v-row class="mx-2">
-            • A mobile app that tests plane surface validation
-          </v-row>
-          <v-row class="mx-2">
-            • Scans and display valid plane surfaces as camera is moved
-          </v-row>
-          <v-row class="mx-2">
-            • Touching valid surface displays rotatable globe based on anchor
-            point
-          </v-row>
-          <v-row class="mx-2">
-            • Coded in C# with Google ARCore assets in Unity Editor
-          </v-row>
-          <v-row class="mx-2 justify-end">
-            <a
-              class="link"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://github.com/SQMoonGit/EarthAR"
-            >
-              Github Repo
-            </a>
-          </v-row>
+          <ul>
+            <li>A mobile calendar app using React Native framework</li>
+            <li>Utilizing styled-component library to minimize styling code</li>
+            <li>
+              Testing and debugging mobile app with Android Studio virtual
+              device and react-devtools library
+            </li>
+          </ul>
+          <a
+            class="link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/SQMoonGit/EarthAR"
+          >
+            Github Repo
+          </a>
         </v-col>
       </v-row>
     </v-card>
@@ -119,6 +112,8 @@ export default class ProjectComponent extends Vue {}
     border-radius: 4px;
     display: block;
     padding: 8px 16px 0 16px;
+    align-items: center;
+    font-size: 1.25rem;
   }
 
   .project-images {
@@ -128,7 +123,7 @@ export default class ProjectComponent extends Vue {}
   .project-details {
     text-align: start;
     margin-top: 0;
-    padding: 0 24px;
+    padding: 0 24px 4px 24px;
 
     &.diagram {
       width: 50%;
@@ -137,6 +132,8 @@ export default class ProjectComponent extends Vue {}
 }
 
 .link {
+  display: flex;
+  justify-content: flex-end;
   text-decoration: none;
 
   &:hover {
