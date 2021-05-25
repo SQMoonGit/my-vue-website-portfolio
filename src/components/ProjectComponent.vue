@@ -84,7 +84,7 @@
             class="link"
             target="_blank"
             rel="noopener noreferrer"
-            href="https://github.com/SQMoonGit/EarthAR"
+            href="https://github.com/SQMoonGit/CalendarApp"
           >
             Github Repo
           </a>
