@@ -11,24 +11,15 @@
       href="https://github.com"
     >
     </v-btn>
-
-    <!-- <v-card>
-      <GChart
-        type="ColumnChart"
-        :data="chartData"
-        :options="chartOptions"
-      ></GChart>
-    </v-card> -->
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
-// import { GChart } from "vue-google-charts";
+import VueFusionChartsComponent from "vue-fusioncharts/component";
+import FusionCharts from "fusioncharts";
+import Charts from "fusioncharts/fusioncharts.charts";
 
-// @Component({
-//   components: { GChart }
-// })
 @Component({})
 export default class TwitchView extends Vue {
   private chartData = [

@@ -45,16 +45,20 @@
         <v-col class="project-details">
           <ul>
             <li>
-              Python script to retrieve data from Twitch's API to analyze data
-              from its streaming platform
+              Python Lambda script to retrieve data from Twitch's API to analyze
+              data from its streaming platform
             </li>
             <li>
-              Hosted in Amazon Lambda to run on an hourly basis, storing the
-              data in DynamoDB tables
+              Cloudwatch runs Lambda script on an hourly basis, storing the data
+              in DynamoDB table
             </li>
             <li>
-              Separate Lambda script retrieves data from DynamoDB and analyzes
-              data to desired metrics
+              API Gateway exposes endpoints for data retrieval with Lambda
+              integration
+            </li>
+            <li>
+              Lambda scripts retrieve data from DynamoDB based on request and
+              formats data accordingly for response
             </li>
           </ul>
           <router-link class="link" :to="{ name: 'Twitch Stats' }">
@@ -70,7 +74,9 @@
         >React Native Calendar App</v-card-subtitle
       >
       <v-row>
-        <v-col class="project-images">Add pic here</v-col>
+        <v-col class="project-images">
+          <v-img src="../assets/calendar_app.png"></v-img>
+        </v-col>
         <v-col class="project-details">
           <ul>
             <li>A mobile calendar app using React Native framework</li>
