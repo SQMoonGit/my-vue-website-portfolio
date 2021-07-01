@@ -65,7 +65,7 @@ export default class HomeView extends Vue {
     "Vuetify",
     "Django",
     "React",
-    "Spring"
+    "Spring Boot"
   ];
   private applications = [
     "VSCode",

@@ -177,8 +177,6 @@ export default class MHWView extends Vue {
     ["water", 0]
   ]);
 
-  created() {}
-
   public weaponDisplay(value: Weapons) {
     this.weapon = value;
     this.weapon.displayAttack = this.weapon.attack.display;
