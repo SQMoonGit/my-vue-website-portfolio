@@ -2,7 +2,7 @@
   <div>
     <v-card min-height="500">
       <v-row no-gutters>
-        <v-col :loading="isLoading">
+        <!-- <v-col :loading="isLoading">
           <v-autocomplete
             id="weapons"
             cache-items
@@ -56,7 +56,7 @@
           </v-autocomplete>
 
           <v-btn dense @click="isArmorSet = !isArmorSet">Armorset</v-btn>
-        </v-col>
+        </v-col> -->
 
         <v-col>
           <!-- better image here with weapons and armor and stuff
@@ -94,45 +94,45 @@ export default class EquipComponent extends Vue {
     });
 
     //API call for armor
-    this.axios
-      .get(`${mhwURL}/armor`)
-      .then(response => {
-        if (response.status === 200 && response.data) {
-          this.armorList = response.data;
-        }
-      })
-      .catch(error => {
-        alert(error.body.error);
-        console.log("[ERROR] - GET/armor");
-      });
+    // this.axios
+    //   .get(`${mhwURL}/armor`)
+    //   .then(response => {
+    //     if (response.status === 200 && response.data) {
+    //       this.armorList = response.data;
+    //     }
+    //   })
+    //   .catch(error => {
+    //     alert(error.body.error);
+    //     console.log("[ERROR] - GET/armor");
+    //   });
 
-    //API call for weapons
-    this.axios
-      .get(`${mhwURL}/weapons`)
-      .then(response => {
-        if (response.status === 200 && response.data) {
-          this.weaponsList = response.data;
-        }
-      })
-      .catch(error => {
-        alert(error.body.error);
-        console.log("[ERROR] - GET/weapons");
-      });
+    // //API call for weapons
+    // this.axios
+    //   .get(`${mhwURL}/weapons`)
+    //   .then(response => {
+    //     if (response.status === 200 && response.data) {
+    //       this.weaponsList = response.data;
+    //     }
+    //   })
+    //   .catch(error => {
+    //     alert(error.body.error);
+    //     console.log("[ERROR] - GET/weapons");
+    //   });
 
-    //API call for armorsets
-    this.axios
-      .get(`${mhwURL}/armor/sets`)
-      .then(response => {
-        if (response.status === 200 && response.data) {
-          this.armorSets = response.data;
-        }
-        this.isLoading = false;
-      })
-      .catch(error => {
-        alert(error.body.error);
-        console.log("[ERROR] - GET/armor/sets");
-        this.isLoading = false;
-      });
+    // //API call for armorsets
+    // this.axios
+    //   .get(`${mhwURL}/armor/sets`)
+    //   .then(response => {
+    //     if (response.status === 200 && response.data) {
+    //       this.armorSets = response.data;
+    //     }
+    //     this.isLoading = false;
+    //   })
+    //   .catch(error => {
+    //     alert(error.body.error);
+    //     console.log("[ERROR] - GET/armor/sets");
+    //     this.isLoading = false;
+    //   });
   }
 
   public sendArmorSelected(armorType: string, e: any) {
