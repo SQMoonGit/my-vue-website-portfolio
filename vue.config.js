@@ -2,8 +2,6 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 
 module.exports = {
-  configureWebpack: {
-    plugins: [new BundleAnalyzerPlugin()]
-  },
+  configureWebpack: {},
   publicPath: "/my-vue-website-portfolio/"
 };
