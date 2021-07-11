@@ -151,7 +151,7 @@
 
 <script lang="ts">
 import { Weapons, Armor, Monster, Skills } from "@/model/mhw";
-import { Component, Vue, Watch } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import EquipComponent from "../components/EquipComponent.vue";
 import MonstersComponent from "../components/MonstersComponent.vue";
 

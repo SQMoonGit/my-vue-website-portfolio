@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import ProjectComponent from "../components/ProjectComponent.vue";
 
 @Component({
@@ -63,7 +63,7 @@ export default class HomeView extends Vue {
     "Vue",
     "Angular",
     "Vuetify",
-    "Django",
+    "React Native",
     "React",
     "Spring Boot"
   ];
