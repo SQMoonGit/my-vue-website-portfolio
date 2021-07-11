@@ -11,8 +11,8 @@
       <v-card-title class="d-block pt-2 pb-0">About Me</v-card-title>
       <v-row class="ma-auto">
         <v-col class="ma-auto"
-          >I'm a front-end developer currently employed at Capital One. Started
-          my journey in web development 2019 and have been down the rabbit hole
+          >I'm a front-end developer currently employed with Wipro. Started my
+          journey in web development 2019 and have been down the rabbit hole
           ever since. Enjoying every bit of it and learning more everyday.
         </v-col>
       </v-row>
